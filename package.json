@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Paresh10/ez-buy/issues"
   },
-  "homepage": "https://github.com/Paresh10/ez-buy#readme"
+  "homepage": "https://github.com/Paresh10/ez-buy#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

@@ -14,7 +14,7 @@
 7. User can see their selected products list in the checkout section.
 8. User can submit their reviews about the products.
 9. User can delete their account.
-
+  
 ## Mongoose Models:  
 User | Product | Checkout | Review
 --- | --- | --- | --- |
