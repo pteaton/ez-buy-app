@@ -21,6 +21,16 @@
 5. Buyers can submit their reviews about the products.
 6. Buyers can delete their customer account.
 
+## Models:  
+User | Seller | Product
+--- | --- | ---
+userame | Username | title
+password | password | description
+firstname | firstname | price
+lastname | lastname | posted
+email | email |
+
+
 ## Technologies used:
 #### JavaScript, Node.js, Express and sessions
 
