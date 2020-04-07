@@ -3,6 +3,18 @@ const express = require('express')
 const app = express()
 const PORT = process.env.PORT
 
+// db connection
+require('./db/db')
+
+
+// Middleware
+app.use(express.static('public'))
+
+// Get route for home
+app.get('/', (req, res) => {
+  res.render('home.ejs')
+})
+
 
 
 
