@@ -1,6 +1,6 @@
 # Project # 2: ez-buy
 ### buy and sell any product in minutes!
-###### Pair programing: Paresh Sharma and Pat Thomas
+###### Pair programing: Paresh Sharma and Pat Eaton
 ## About:
 #### Custom E-commerce software for users to be able to sell and buy stuff in minutes.
 
