@@ -22,7 +22,7 @@
 6. Buyers can delete their customer account.
 
 ## Models:  
-User | Seller | Product
+Buyer | Seller | Product
 --- | --- | ---
 userame | Username | title
 password | password | description
