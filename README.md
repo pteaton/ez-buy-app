@@ -1,7 +1,8 @@
 # Project # 2: ez-buy
-### buy and sell stuff in minutes!
+### buy and sell any product in minutes!
+###### Pair programing: Paresh Sharma and Pat Thomas
 ## About:
-#### Custom E-commerce software to for users to be able to sell and buy stuff in minutes.
+#### Custom E-commerce software for users to be able to sell and buy stuff in minutes.
 
 # User Story:
 1. User can create a seller account and log in in their account.
@@ -23,78 +24,80 @@ firstname | price | user | name |
 lastname | posted | product
 email | url |
 
-### User Model:
-###### const userSchema = new mongoose.Schema ({
-######  username: {
-    type: String,
-    required: true
-  },
-######  password: {
-    type: String,
-    required: true
-  },
-###### firstName: String,
-###### lastName: String,
-###### email: String,
-###### address: String,
 
-###### products: [{
+```
+<!-- User Model: -->
+const userSchema = new mongoose.Schema ({
+ username: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  firstName: String,
+  lastName: String,
+  email: String,
+  address: String,
+
+ products: [{
   type: mongoose.Schema.Types.ObjectId,
   ref: 'Product'
   }]
 })
 
-### Product Model:
-###### const productSchema = new mongoose.Schema ({
-######  title: {
+ <!-- Product Model: -->
+ const productSchema = new mongoose.Schema ({
+   title: {
     type: String,
     required: true
   },
-######  description: {
+  description: {
     type: String,
   },
-###### price: Number,
-###### posted: Date   
-###### url: [{
+  price: Number,
+  posted: Date   
+  url: [{
     type: mongoose.SchemaTypes.Url,
     required: true
   }]
 })
 
-### Checkout Model:
-###### const checkoutSchema = new mongoose.Schema ({
-###### created_on: Date,
-######  shipping: {
-    type: String
+<!-- Checkout Model: -->
+const checkoutSchema = new mongoose.Schema ({
+  created_on: Date,
+  shipping: {
+  type: String
   },
-###### user: {
+  user: {
   type: mongoose.SchemaTypes.ObjectId,
   required: true,
   ref: 'User'
 },
-###### product: {
+ product: {
   type: mongoose.SchemaTypes.ObjectId,
   required: true,
   ref: 'Product'
 }
 })
 
-### Review Model:
-###### const reviewSchema = new mongoose.Schema({
-######  text: {
+ <!-- Review Model: -->
+const reviewSchema = new mongoose.Schema({
+  text: {
     type: String,
     required: true
   },
-######  date: {
+  date: {
     type: Date,
     default: Date.now
   },
-######  name: {
+  name: {
     type: String,
     required: true
   }
 })
-
+```
 
 ## Technologies used:
 #### JavaScript, Node.js, Express and sessions
