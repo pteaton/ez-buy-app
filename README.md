@@ -28,7 +28,7 @@ userame | Username | title
 password | password | description
 firstname | firstname | price
 lastname | lastname | posted
-email | email |
+email | email | img
 
 
 ## Technologies used:
