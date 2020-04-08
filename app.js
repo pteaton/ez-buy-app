@@ -9,6 +9,7 @@ const PORT = process.env.PORT
 require('./db/db')
 
 
+
 // Middleware
 app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -33,7 +34,8 @@ app.use((req, res, next) => {
 // Controllers
 const authController = require('./controllers/authController')
 app.use('/auth', authController)
-
+const productController = require('./controllers/productController')
+app.use('/product', productController)
 
 
 // Get route for home
