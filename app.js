@@ -10,6 +10,13 @@ require('./db/db')
 // Middleware
 app.use(express.static('public'))
 
+
+// Controllers
+const authController = require('./controllers/authController')
+app.use('/auth', authController)
+
+
+
 // Get route for home
 app.get('/', (req, res) => {
   res.render('home.ejs')

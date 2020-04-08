@@ -1,3 +1,34 @@
 body {
-  background-color: lightsteelblue;  
+  /* background-image: url('https://image.freepik.com/free-vector/abstract-ornamental-flowers-background_23-2148358219.jpg'); */
+  background-size: cover;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  /* color: #ECF0F1; */
+}
+img {
+  width: 30%;
+  border-radius: 20px;
+}
+form {
+  margin-top: 50px;
+  width: 50%;
+  display: inline-block;
+  justify-content: center;
+}
+input, textarea {
+  text-align: center;
+}
+footer {
+  margin-top: 200px;
+}
+nav {
+  margin-top: 50px;
+}
+.error-msg {
+  background-color: red;
+  color: white;
+}
+.user-bio {
+  margin-right: 200px;
+  margin-left: 200px;
 }
