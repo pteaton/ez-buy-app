@@ -10,8 +10,6 @@
   <body>
 
     <nav>
-      <a href="/">Home</a>
-      |
       <% if(loggedIn) { %>
         You are logged in as <%= username %>
         (<a href="/auth/logout">Log out</a>)
@@ -24,5 +22,7 @@
     </nav>
 
 <nav>
+  <a href="/products">Home</a>
+  |
   <a href="/products/new">Add new products</a>
 </nav>
