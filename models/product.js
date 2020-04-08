@@ -1,4 +1,4 @@
-const mongoose = require('mognoose')
+const mongoose = require('mongoose')
 
 const productSchema = new mongoose.Schema ({
   title: {
@@ -9,16 +9,17 @@ const productSchema = new mongoose.Schema ({
    type: String,
  },
  price: Number,
- posted: Date
- url: [{
-   type: mongoose.SchemaTypes.Url,
-   required: true
- }],
+ posted: Date,
+ // url: [{
+ //   type: mongoose.SchemaTypes.Url,
+ //   required: true
+ // }],
  seller: {
-   ref: "User"
+     type: mongoose.Schema.Types.ObjectId,
+     ref: "User"
  }
 })
 
-const Product new mongoose.model('Product', 'productSchema')
+const Product =  mongoose.model('Product', productSchema)
 
 module.exports = Product
