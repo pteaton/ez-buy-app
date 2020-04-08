@@ -55,56 +55,41 @@ router.get('/login', (req, res) => {
 
 // specify route to log in
 router.post('/login', async (req, res, next) => {
-	try {
-		const user = await User.findOne({ username = req.body.username })
+    try {
+        const user = await User.findOne({
+            username: req.body.username
+        })
 
-		// if user does not exist
-		if(!user) {
-			req.session.message = "Username or Password is invalid"
-			res.redirect('/auth/login')
-		} 
-			else if (user.password == req.body.password) {
-        		req.session.loggedIn = true
-        		req.session.userId = user.id
-        		req.session.username = user.username
-        		req.session.message = `Welcome back ${user.username}, What do you want to buy?`
-        		res.redirect('/')
-			} 
-	} 	
-	catch(err) {
-		next(err)
-	}
+        // if user does not exist
+        if (!user) {
+          console.log(user);
+            req.session.message = "Username or Password is invalid"
+            res.redirect('/auth/login')
+        }
+        else {
+          const ifUserInfoIsValid = bcrypt.compareSync(req.body.password, user.password)
+
+          if (ifUserInfoIsValid) {
+            req.session.loggedIn = true
+            req.session.userId = user.id
+            req.session.username = user.username
+            req.session.message = `Welcome back ${user.username}, What do you want to buy?`
+
+            // remmeber to redirect on the profuct's home page
+            res.redirect('/')
+          }
+          else  {
+            req.session.message = `Username or Password is not correct.`
+            res.redirect('/auth/login')
+          }
+
+        }
+
+    }
+    catch (err) {
+        next(err)
+    }
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

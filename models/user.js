@@ -14,10 +14,7 @@ const userSchema = new mongoose.Schema ({
   email: String,
   address: String,
 
- products: [{
-  type: mongoose.Schema.Types.ObjectId,
-  ref: 'Product'
-  }]
+
 })
 
 const User = mongoose.model('User', userSchema)

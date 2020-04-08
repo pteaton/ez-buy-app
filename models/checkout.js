@@ -3,17 +3,17 @@ const mongoose = require('mongoose')
 const checkoutSchema = new mongoose.Schema ({
   created_on: Date,
   shipping: {
-  type: String
+    type: String
+    },
+  buyer: {
+    type: mongoose.SchemaTypes.ObjectId,
+    required: true,
+    ref: 'User'
   },
-  user: {
-  type: mongoose.SchemaTypes.ObjectId,
-  required: true,
-  ref: 'User'
-},
  product: {
-  type: mongoose.SchemaTypes.ObjectId,
-  required: true,
-  ref: 'Product'
+    type: mongoose.SchemaTypes.ObjectId,
+    required: true,
+    ref: 'Product'
 }
 })
 

@@ -13,7 +13,10 @@ const productSchema = new mongoose.Schema ({
  url: [{
    type: mongoose.SchemaTypes.Url,
    required: true
- }]
+ }],
+ seller: {
+   ref: "User"
+ }
 })
 
 const Product new mongoose.model('Product', 'productSchema')
