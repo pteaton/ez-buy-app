@@ -9,10 +9,14 @@
   </head>
   <body>
 
-  <nav>
-    <a href="/">ez-buy</a>
-    |
-    <a href="/auth/signup">Sign-up for free!</a>
-    |
-    <a href="/auth/login">Login</a>
-  </nav>
+    <nav>
+      <% if(loggedIn) { %>
+        You are logged in as <%= username %>
+        (<a href="/auth/logout">Log out</a>)
+      <% } else { %>
+        <a href="/auth/signup">Sign-up for free!</a>
+        |
+        <a href="/auth/login">Log in</a>
+
+      <% }  %>
+    </nav>
