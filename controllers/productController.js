@@ -84,7 +84,7 @@ router.get('/:id', async (req, res, next) => {
 
 
 
-
+// POST route -- product image create route
 router.post('/', upload.single('productImage'), async (req, res, next) => {
 
   console.log(req.file);
