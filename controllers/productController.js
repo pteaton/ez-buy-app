@@ -102,11 +102,13 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
 // Delete route
 router.delete('/:id', async (req, res, next) => {
   try {
+      const foundProduct = await Product.findById(req.params.id)
 
-    fs.unlink('', (err) => {
+    fs.unlink(`./${foundProduct.productImage}`, (err) => {
       if (err) throw err;
       console.log('');
     });
+
 
     const deletedProduct = await
     Product.findOneAndRemove(req.params.id)
