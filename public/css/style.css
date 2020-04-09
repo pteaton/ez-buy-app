@@ -8,6 +8,13 @@ body {
 img {
   width: 20%;
   border-radius: 20px;
+  margin: 1%;
+  border: 1px solid black;
+/* 
+  display: inline-block;
+  vertical-align: top;
+  justify-content: center;
+  align-items: center; */
 }
 form {
   margin-top: 50px;
