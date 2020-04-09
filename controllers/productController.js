@@ -10,7 +10,7 @@ const storage = multer.diskStorage({
     cb(null, './uploads/')
   },
   filename: function(req, file, cb) {
-    cb(null, new Date().toISOString() + file.filename)
+    cb(null, new Date().toISOString() + file.originalname)
   }
 })
 
@@ -19,7 +19,6 @@ const fileFilter = (req, file, cb) => {
   //if the filetype is not right
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
     cb(null, true)
-    // cb(new Error('File was not saved'))
   }
   else {
     cb(null, false)
@@ -65,13 +64,13 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
       title: req.body.title,
       price: req.body.price,
       description: req.body.description,
-      // productImage: req.file.path
+      productImage: req.file.path
 
     })
     const createdNewProduct = await Product.create(createNewProduct)
     console.log("here is product created");
     console.log(createNewProduct);
-    res.render('products/home.ejs')
+    res.redirect('/products')
       // res.json({
       //   success: true,
       //   message: "Product was added"
