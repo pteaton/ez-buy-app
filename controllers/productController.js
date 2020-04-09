@@ -44,8 +44,8 @@ router.get('/', async (req, res, next ) => {
     res.render('products/home.ejs', {
       products: findProducts
     })
-  } catch (e) {
-    next (e)
+  } catch (err) {
+    next (err)
   }
 })
 
@@ -61,8 +61,8 @@ router.get('/:id', async (req, res, next) => {
     // will get back on this after completing user route
     // .populate('user')
     // .populate('reviews.user')
-    console.log("here is product from show route")
-    console.log(foundProduct)
+    // console.log("here is product from show route")
+    // console.log(foundProduct)
     res.render('products/show.ejs', {
       product: foundProduct,
       // userId: req.session.userId
@@ -95,14 +95,24 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
       //   message: "Product was added"
       // })
   }
-  catch (e) {
-    next (e)
+  catch (err) {
+    next (err)
   }
 })
 
 
-// GET delete route
-
+// delete route
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const deletedProduct = await
+    Product.findOneAndRemove(req.params.id)
+    console.log(deletedProduct)
+    res.redirect('/products')
+  } 
+  catch(err) {
+    next(err)
+  }
+})
 
 
 

@@ -1,11 +1,13 @@
+// Dependencies
 require('dotenv').config()
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const session = require('express-session')
+const methodOverride = require('method-override')
 const PORT = process.env.PORT
 
-// db connection
+// Database Connection
 require('./db/db')
 
 
@@ -16,9 +18,11 @@ app.use(express.static('public'))
 // uploads folder for productsImage
 app.use('/uploads', express.static('uploads'))
 
-// body-parser
+// Body-Parser
 app.use(bodyParser.urlencoded({ extended: false }))
 
+// Method-Override
+app.use(methodOverride('_method'))
 
 // Session
 app.use(session({
