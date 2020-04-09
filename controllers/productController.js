@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const multer = require('multer')
+const fs = require('fs')
 const Product = require('../models/product')
 const requireAuth = require('../lib/requireAuth')
 
@@ -101,6 +102,11 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
 // Delete route
 router.delete('/:id', async (req, res, next) => {
   try {
+
+    fs.unlink('', (err) => {
+      if (err) throw err;
+      console.log('');
+    });
 
     const deletedProduct = await
     Product.findOneAndRemove(req.params.id)
