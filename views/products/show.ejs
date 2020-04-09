@@ -5,16 +5,21 @@
   <h3>Show page for <%= product.title %></h3>
 
     <img class="productImg" src="/<%= product.productImage %> ">
+
+
+    <p> Posted on <%= product.posted %>  </p>
+
     <p> <%= product.price %> </p>
     <p> <%= product.description %> </p>
 
 
+
     <form method="POST" action="/products/<%= product.id %>?_method=DELETE">
-      
+
           <button class="btn btn-primary">Delete</button>
            <a href="/products/<%= product.id %>/edit">
              Update the product!</a>
-     
+
     </form>
 
 

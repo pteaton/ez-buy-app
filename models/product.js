@@ -16,14 +16,13 @@ const productSchema = new mongoose.Schema ({
    type: String,
    required: true
  },
- posted: Date,
- // url: [{
- //   type: mongoose.SchemaTypes.Url,
- //   required: true
- // }],
- seller: {
+ posted: {
+   type: Date,
+   default: Date.now()
+ },
+ user: {
      type: mongoose.Schema.Types.ObjectId,
-     ref: "User"
+     ref: 'User'
  }
 })
 

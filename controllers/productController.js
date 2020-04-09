@@ -3,7 +3,9 @@ const router = express.Router()
 const multer = require('multer')
 const fs = require('fs')
 const Product = require('../models/product')
+const User = require('../models/user')
 const requireAuth = require('../lib/requireAuth')
+const mongoose = require('mongoose')
 
 // Saving image and uploading image using multer
 const storage = multer.diskStorage({
@@ -39,7 +41,7 @@ const upload =  multer({
 // Get home route
 router.get('/', async (req, res, next ) => {
   try {
-    const findProducts = await Product.find({})
+    const findProducts = await Product.find({}).populate('user')
 
     console.log("here is product find route");
     console.log(findProducts);
@@ -59,15 +61,12 @@ router.get('/new', (req, res) => {
 // show from GET route log in
 router.get('/:id', async (req, res, next) => {
   try {
-    const foundProduct = await Product.findById(req.params.id)
-    // will get back on this after completing user route
-    // .populate('user')
-    // .populate('reviews.user')
-    // console.log("here is product from show route")
-    // console.log(foundProduct)
+    const foundProduct = await Product.findById(req.params.id).populate('user')
+    console.log("here is product from show route")
+    console.log(foundProduct)
     res.render('products/show.ejs', {
       product: foundProduct,
-      // userId: req.session.userId
+      userId: req.session.userId
     })
   }
   catch(err) {
