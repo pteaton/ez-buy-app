@@ -54,6 +54,35 @@ router.get('/new', (req, res) => {
   res.render('products/new.ejs')
 })
 
+// show from GET route log in
+router.get('/:id', async (req, res, next) => {
+  try {
+    const foundProduct = await Product.findById(req.params.id)
+    // will get back on this after completing user route
+    // .populate('user')
+    // .populate('reviews.user')
+    console.log("here is product from show route")
+    console.log(foundProduct)
+    res.render('products/show.ejs', { 
+      product: foundProduct,
+      // userId: req.session.userId
+    })
+  } 
+  catch(err) {
+    next(err)
+  }
+
+})
+
+
+
+
+
+
+
+
+
+
 
 router.post('/', upload.single('productImage'), async (req, res, next) => {
 
@@ -79,7 +108,6 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
     next (e)
   }
 })
-
 
 
 

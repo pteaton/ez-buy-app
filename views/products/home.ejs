@@ -5,10 +5,14 @@
 	<%  products.forEach((product) => { %>
 
       <img class="productImg" src="<%= product.productImage %> ">
-      <p> <%= product.title %> </p>
+      	<p>
+      		<a href="./products/<%= product.id %>">
+      	<%= 	product.title %></a> </p>
     	<p> <%= product.price %> </p>
     	<p> <%= product.description %> </p>
 
 	<%  }) %>
 
 <%- include('../partials/footer.ejs') %>
+
+
