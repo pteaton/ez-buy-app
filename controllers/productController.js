@@ -108,7 +108,7 @@ router.delete('/:id', async (req, res, next) => {
     Product.findOneAndRemove(req.params.id)
     console.log(deletedProduct)
     res.redirect('/products')
-  } 
+  }
   catch(err) {
     next(err)
   }
@@ -121,13 +121,22 @@ router.get('/:id/edit', async (req, res, next) => {
     Product.findById(req.params.id)
     console.log(editedProduct)
     res.render('products/edit.ejs', {product: editedProduct})
-  } 
+  }
   catch(err) {
     next(err)
   }
 })
 
-
+router.put('/:id', async (req, res, next) => {
+  try {
+    const updatedProduct = await Product.findByIdAndUpdate(req.params.id)
+    console.log(updatedProduct);
+    res.redirect('/products')
+  }
+  catch (e) {
+    next (e)
+  }
+})
 
 
 
