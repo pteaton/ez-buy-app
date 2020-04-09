@@ -102,10 +102,6 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try {
 
-    const deleteImage = {
-      productImage: req.file.path
-    }
-
     const deletedProduct = await
     Product.findOneAndRemove(req.params.id)
     console.log(deletedProduct)
