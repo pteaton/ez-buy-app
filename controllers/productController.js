@@ -3,7 +3,7 @@ const router = express.Router()
 const multer = require('multer')
 const Product = require('../models/product')
 
-// saving image and uploading image using multer
+// Saving image and uploading image using multer
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
     cb(null, './uploads/')
@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
   }
 })
 
-// filter by image size/file type
+// Filter by image size/file type
 const fileFilter = (req, file, cb) => {
 
   //if the filetype is not right
@@ -49,7 +49,7 @@ router.get('/', async (req, res, next ) => {
   }
 })
 
-// new route
+// New route
 router.get('/new', (req, res) => {
   res.render('products/new.ejs')
 })
@@ -101,7 +101,7 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
 })
 
 
-// delete route
+// Delete route
 router.delete('/:id', async (req, res, next) => {
   try {
     const deletedProduct = await
@@ -114,6 +114,18 @@ router.delete('/:id', async (req, res, next) => {
   }
 })
 
+// GET route -- edit route
+router.get('/:id/edit', async (req, res, next) => {
+  try {
+    const editedProduct = await
+    Product.findById(req.params.id)
+    console.log(editedProduct)
+    res.render('products/edit.ejs', {product: editedProduct})
+  } 
+  catch(err) {
+    next(err)
+  }
+})
 
 
 

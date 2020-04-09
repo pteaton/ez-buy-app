@@ -1,0 +1,61 @@
+<%- include('../partials/header.ejs') %>
+
+  <h3>Update your product</h3>
+  <form action="/products" method="POST" enctype="multipart/form-data">
+    <fieldset>
+ 
+    <div class="form-group">
+      <label for="title">Update Title</label>
+      <input
+      type="text"
+      class="form-control"
+      id="title"
+      name="title"
+      placeholder="Update product title"
+      value="<%= product.title %>">
+    </div>
+ 
+    <div class="form-group">
+      <label for="price">Update Price</label>
+      <input
+      type="number"
+      class="form-control"
+      id="price"
+      name="price"
+      placeholder="$"
+      value="<%= product.price %>">
+    </div>
+    
+    <div class="form-group">
+      <label for="description">Update Description</label>
+      <br>
+      <textarea
+      name="description"
+      rows="8" cols="50"
+      id="description"
+      placeholder="Update product description"
+      value="<%= product.description %>">
+      </textarea>
+    </div>
+   
+    <div class="form-group">
+      <label for="productImage">Update picture</label>
+      <input type="file" name="productImage"
+      id="productImage" accept="image/png, image/jpeg">
+    </div>
+    </fieldset>
+  <br>
+    <button type="submit" class="btn btn-primary">Update product</button>
+    <br>
+    
+    <small>
+    We'll never share your information with anyone else.
+    </small>
+  </form>
+
+
+
+
+
+
+<%- include('../partials/footer.ejs') %>
