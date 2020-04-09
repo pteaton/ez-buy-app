@@ -90,10 +90,6 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
     console.log("here is product created");
     console.log(createNewProduct);
     res.redirect('/products')
-      // res.json({
-      //   success: true,
-      //   message: "Product was added"
-      // })
   }
   catch (err) {
     next (err)
@@ -127,16 +123,24 @@ router.get('/:id/edit', async (req, res, next) => {
   }
 })
 
-router.put('/:id', async (req, res, next) => {
+router.put('/:id',upload.single('productImage'), async (req, res, next) => {
   try {
-    const updatedProduct = await Product.findByIdAndUpdate(req.params.id)
-    console.log(updatedProduct);
-    res.redirect('/products')
-  }
-  catch (e) {
-    next (e)
-  }
-})
+    const updatedProduct = {
+      title: req.body.title,
+      price: req.body.price,
+      description: req.body.description,
+      productImage: req.file.path
+    }
+
+    const productToBeUpdated = await Product.findByIdAndUpdate(req.params.id, updatedProduct, { new: true })
+      console.log(productToBeUpdated);
+      res.redirect('/products')
+    }
+    catch (e) {
+      next (e)
+    }
+
+  })
 
 
 
