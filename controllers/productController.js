@@ -64,11 +64,11 @@ router.get('/:id', async (req, res, next) => {
     // .populate('reviews.user')
     console.log("here is product from show route")
     console.log(foundProduct)
-    res.render('products/show.ejs', { 
+    res.render('products/show.ejs', {
       product: foundProduct,
       // userId: req.session.userId
     })
-  } 
+  }
   catch(err) {
     next(err)
   }
