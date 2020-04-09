@@ -8,7 +8,14 @@ const productSchema = new mongoose.Schema ({
  description: {
    type: String,
  },
- price: Number,
+ price: {
+   type: Number,
+   // required: true
+ },
+ productImage: {
+   type: String,
+   // required: true
+ },
  posted: Date,
  // url: [{
  //   type: mongoose.SchemaTypes.Url,

@@ -12,6 +12,11 @@ require('./db/db')
 
 // Middleware
 app.use(express.static('public'))
+
+// uploads folder for productsImage
+app.use('/uploads', express.static('uploads'))
+
+// body-parser
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // Session

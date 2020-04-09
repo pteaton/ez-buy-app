@@ -3,15 +3,19 @@
   <h3>New Route for products</h3>
 
   <form action="/products" method="POST">
+    <!-- enctype="multipart/form-data" -->
+
     <fieldset>
     <div class="form-group">
-      <label for="product-title">Title</label>
+
+      <label for="title">Title</label>
       <input
       type="text"
       class="form-control"
-      id="product-title"
-      name="product-title"
+      id="title"
+      name="title"
       placeholder="Product title here..">
+
     </div>
 
     <div class="form-group">
@@ -34,6 +38,12 @@
       placeholder="Say something about your product..">
       </textarea>
 
+    </div>
+
+    <div class="form-group">
+      <label for="productImage">Upload picture</label>
+      <input type="file" name="productImage"
+      id="productImage" accept="image/png, image/jpeg">
     </div>
 
     </fieldset>

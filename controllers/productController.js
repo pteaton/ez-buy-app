@@ -2,14 +2,15 @@ const express = require('express')
 const router = express.Router()
 const multer = require('multer')
 // const upload = multer({dest: './uploads/'})
+const Product = require('../models/product')
 
 
 const storage = multer.diskStorage({
-  destonation: function(req, file, cb) {
+  destination: function(req, file, cb) {
     cb(null, './uploads/')
   },
   filename: function(req, file, cb) {
-    cb(null, new Date().toISOString() + file.originalname)
+    cb(null, new Date().toISOString() + file.filename)
   }
 })
 
@@ -18,10 +19,9 @@ const fileFilter = (req, file, cb) => {
   //if the filetype is not right
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
     cb(null, true)
-    cb(new Error('File was not saved'))
+    // cb(new Error('File was not saved'))
   }
   else {
-
     cb(null, false)
   }
 }
@@ -33,11 +33,21 @@ const upload =  multer({
   fileFilter: fileFilter
 })
 
-const Product = require('../models/product')
+
 
 // Get home route
-router.get('/', (req, res) => {
-  res.render('products/home.ejs')
+router.get('/', async (req, res, next ) => {
+  try {
+    const findProducts = await Product.find({})
+
+    console.log("here is product find route");
+    console.log(findProducts);
+    res.render('products/home.ejs', {
+      products: findProducts
+    })
+  } catch (e) {
+    next (e)
+  }
 })
 
 
@@ -51,11 +61,23 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
 
   console.log(req.file);
   try {
-      res.json({
-        success: true,
-        message: "Product was added"
-      })
-  } catch (e) {
+    const createNewProduct = ({
+      title: req.body.title,
+      price: req.body.price,
+      description: req.body.description,
+      // productImage: req.file.path
+
+    })
+    const createdNewProduct = await Product.create(createNewProduct)
+    console.log("here is product created");
+    console.log(createNewProduct);
+    res.render('products/home.ejs')
+      // res.json({
+      //   success: true,
+      //   message: "Product was added"
+      // })
+  }
+  catch (e) {
     next (e)
   }
 })
