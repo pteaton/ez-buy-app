@@ -2,11 +2,12 @@
 
   <h3>Welcome to ez-buy</h3>
 
-<%  products.forEach((product) => { %>
+	<%  products.forEach((product) => { %>
 
-    <p> <%= product.price %> </p>
-    <p> <%= product.description %> </p>
+    	<p> <%= product.price %> </p>
+    	<p> <%= product.description %> </p>
+    	<!-- <img src="<%= product.image %>"> ? -->
 
-<%  }) %>
+	<%  }) %>
 
 <%- include('../partials/footer.ejs') %>

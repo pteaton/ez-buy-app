@@ -44,9 +44,9 @@ app.use('/products', productController)
 
 
 // Get route for home
-// app.get('/', (req, res) => {
-//   res.render('home.ejs')
-// })
+app.get('/', (req, res) => {
+  res.render('home.ejs')
+})
 
 
 // 404 page

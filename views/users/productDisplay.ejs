@@ -1,0 +1,15 @@
+<%- include('../partials/header.ejs') %>
+
+  <%- include('../products/nav.ejs') %>
+
+  <h3>All products displayed by seller: <%= user.username %></h3>
+
+  <ul>
+    <% products.forEach((product) => { %>
+      <li>
+        <a href="/products/<%= product.id %>"><%= product.title %></a>
+      </li>
+    <% }) %>    
+  </ul>
+
+<%- include('../partials/footer.ejs') %>
