@@ -3,7 +3,7 @@ const router = express.Router()
 const multer = require('multer')
 const Product = require('../models/product')
 
-
+// saving image and uploading image using multer
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
     cb(null, './uploads/')
@@ -13,6 +13,7 @@ const storage = multer.diskStorage({
   }
 })
 
+// filter by image size/file type
 const fileFilter = (req, file, cb) => {
 
   //if the filetype is not right
