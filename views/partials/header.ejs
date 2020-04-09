@@ -10,19 +10,25 @@
   <body>
 
     <nav>
+      |
       <% if(loggedIn) { %>
         You are logged in as <%= username %>
-        (<a href="/auth/logout">Log out</a>)
+        <a href="/auth/logout">Log out</a>
+        |
       <% } else { %>
         <a href="/auth/signup">Sign-up for free!</a>
         |
         <a href="/auth/login">Log in</a>
-
+      |
       <% }  %>
     </nav>
 
 <nav>
-  <a href="/products">Home</a>
+  | <a href="/products">Home</a>
+
+  <% if (loggedIn) { %>
+  |  <a href="/products/new">Add new products</a>
+  <% } %>
   |
-  <a href="/products/new">Add new products</a>
+
 </nav>

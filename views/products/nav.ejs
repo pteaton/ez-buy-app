@@ -1,5 +1,15 @@
 <%- include('../partials/header.ejs') %>
 
+<nav>
+<small>
+  <a href="/products">Marketplace</a> |
+  <a href="/products/new">Add new product</a>
+  <% if (username) { %>
+    |
+    <a href="/users/<%= userId %>/products">My products</a>
+  <% } %>
+</small>
+</nav>
 
 
 

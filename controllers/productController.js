@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const multer = require('multer')
 const Product = require('../models/product')
+const requireAuth = require('../lib/requireAuth')
 
 // Saving image and uploading image using multer
 const storage = multer.diskStorage({
@@ -100,6 +101,11 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
 // Delete route
 router.delete('/:id', async (req, res, next) => {
   try {
+
+    const deleteImage = {
+      productImage: req.file.path
+    }
+
     const deletedProduct = await
     Product.findOneAndRemove(req.params.id)
     console.log(deletedProduct)
@@ -123,6 +129,7 @@ router.get('/:id/edit', async (req, res, next) => {
   }
 })
 
+// Router - update routes
 router.put('/:id',upload.single('productImage'), async (req, res, next) => {
   try {
     const updatedProduct = {

@@ -9,7 +9,10 @@
       <li>
         <a href="/products/<%= product.id %>"><%= product.title %></a>
       </li>
-    <% }) %>    
+      <li>
+        <p> <%= product.description %> </p>
+      </li>
+    <% }) %>
   </ul>
 
 <%- include('../partials/footer.ejs') %>
