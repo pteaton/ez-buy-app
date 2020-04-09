@@ -49,7 +49,6 @@ router.get('/', async (req, res, next ) => {
   }
 })
 
-
 // new route
 router.get('/new', (req, res) => {
   res.render('products/new.ejs')
@@ -74,15 +73,6 @@ router.get('/:id', async (req, res, next) => {
   }
 
 })
-
-
-
-
-
-
-
-
-
 
 // POST route -- product image create route
 router.post('/', upload.single('productImage'), async (req, res, next) => {
@@ -110,6 +100,8 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
   }
 })
 
+
+// GET delete route
 
 
 
