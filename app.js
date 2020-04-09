@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const PORT = process.env.PORT
@@ -18,6 +19,9 @@ app.use('/uploads', express.static('uploads'))
 
 // body-parser
 app.use(bodyParser.urlencoded({ extended: false }))
+
+//cors
+app.use(cors())
 
 // Session
 app.use(session({

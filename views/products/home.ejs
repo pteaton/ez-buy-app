@@ -4,7 +4,7 @@
 
 	<%  products.forEach((product) => { %>
 
-      <img class="productImg" src="<%= product.productImage %> ">
+      <img class="productImg" src="<%= product.productImage %>">
       	<p>
       		<a href="./products/<%= product.id %>">
       	<%= 	product.title %></a> </p>
@@ -14,5 +14,3 @@
 	<%  }) %>
 
 <%- include('../partials/footer.ejs') %>
-
-
