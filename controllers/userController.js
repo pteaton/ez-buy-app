@@ -3,16 +3,18 @@ const router = express.Router()
 const Product = require('../models/product')
 const User = require('../models/user')
 
-// GET /users/:userId/products
-router.get('/:userId/products', async (req, res, next) => {
+// GET route -- /:id
+router.get('/:id', async (req, res, next) => {
   try {
-    const productsToBeSoldByUser = await Product.find({ user: req.params.userId }).populate('user')
-    const user = await User.findById(req.params.userId)
-
-    res.render('users/productDisplay.ejs', {
-      username: username,
+    const foundUser = await User.findById(req.params.id)
+    const productsToBeSoldByUser = await Product.find({ foundUser: req.params.id }).populate('user')
+    console.log("here is show page for user")
+    console.log(foundUser)
+    console.log(productsToBeSoldByUser)
+    res.render('users/show.ejs', {
+      user: foundUser,
       products: productsToBeSoldByUser,
-      userId: user.id
+      userId: req.session.userId
     })
 
   } catch(err) {

@@ -27,7 +27,8 @@
   | <a href="/products">Home</a>
 
   <% if (loggedIn) { %>
-  |  <a href="/products/new">Add new products</a>
+  |  <a href="/products/new">Add new products</a> |
+     <a href="/users/<%= user.id %>"></a> 
   <% } %>
   |
 

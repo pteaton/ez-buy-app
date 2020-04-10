@@ -3,7 +3,6 @@
   <%- include('../products/nav.ejs') %>
 
   <h3>All products displayed by seller: <%= user.username %></h3>
-
   <ul>
     <% products.forEach((product) => { %>
       <li>
@@ -12,7 +11,13 @@
       <li>
         <p> <%= product.description %> </p>
       </li>
+      <li>
+        <img class="productImg"src="/<%=product.productImage%>"></p>
+      </li>
     <% }) %>
   </ul>
 
 <%- include('../partials/footer.ejs') %>
+
+<!-- \\\\\\\\\\\\\\\\\\\\\\ -->
+
