@@ -1,0 +1,56 @@
+<%- include('../partials/header.ejs') %>
+
+
+<form method="POST" action="/users/<%= userId %>?_method=PUT">
+  <fieldset>
+<div class="form-group">
+  <label for="firstname">First Name:</label>
+  <input
+  type="text"
+  class="form-control"
+  id="firstname"
+  name="firstname"
+  placeholder="type firstname here..">
+</div>
+
+<div class="form-group">
+  <label for="lastname">Last Name:</label>
+  <input
+  type="text"
+  class="form-control"
+  id="lastname"
+  name="lastname"
+  placeholder="type lastname here..">
+</div>
+
+<div class="form-group">
+  <label for="email">Your email:</label>
+  <input
+  type="email"
+  class="form-control"
+  id="email"
+  name="email"
+  placeholder="type email here..">
+</div>
+
+<div class="form-group">
+  <label for="address">Your addres:</label>
+  <input
+  type="text"
+  class="form-control"
+  id="address"
+  name="address"
+  placeholder="type address here..">
+</div>
+
+</fieldset>
+
+<small>
+We'll never share your information with anyone else.
+</small>
+<br>
+
+<button class="btn btn-primary">Update your profile!</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>
