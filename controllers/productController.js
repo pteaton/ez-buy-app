@@ -1,12 +1,13 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const router = express.Router()
 const multer = require('multer')
 const fs = require('fs')
 const Product = require('../models/product')
 const User = require('../models/user')
 const requireAuth = require('../lib/requireAuth')
-const mongoose = require('mongoose')
 
+// MULTER CONFIGURATION
 // Saving image and uploading image using multer
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -64,6 +65,7 @@ router.get('/:id', async (req, res, next) => {
     const foundProduct = await Product.findById(req.params.id).populate('user')
     console.log("here is product from show route")
     console.log(foundProduct)
+    console.log(req.session);
     res.render('products/show.ejs', {
       product: foundProduct,
       userId: req.session.userId
@@ -90,6 +92,7 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
     const createdNewProduct = await Product.create(createNewProduct)
     console.log("here is product created");
     console.log(createNewProduct);
+    req.locals.message = `Product ${createdNewProduct} was added.`
     res.redirect('/products')
   }
   catch (err) {
