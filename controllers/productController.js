@@ -42,12 +42,14 @@ const upload =  multer({
 // Get home route
 router.get('/', async (req, res, next ) => {
   try {
-    const findProducts = await Product.find({}).populate('user')
+    const findProducts = await Product.find().populate('user')
 
     console.log("here is product find route");
     console.log(findProducts);
+    console.log(Product.populated('user'));
     res.render('products/home.ejs', {
-      products: findProducts
+      products: findProducts,
+      userId: req.session.userId
     })
   } catch (err) {
     next (err)
@@ -92,7 +94,7 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
     const createdNewProduct = await Product.create(createNewProduct)
     console.log("here is product created");
     console.log(createNewProduct);
-    req.locals.message = `Product ${createdNewProduct} was added.`
+    res.locals.message = `Product ${createdNewProduct} was added.`
     res.redirect('/products')
   }
   catch (err) {
@@ -149,8 +151,8 @@ router.put('/:id',upload.single('productImage'), async (req, res, next) => {
       console.log(productToBeUpdated);
       res.redirect('/products')
     }
-    catch (e) {
-      next (e)
+    catch (err) {
+      next (err)
     }
 
   })
