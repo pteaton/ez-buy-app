@@ -40,3 +40,13 @@ nav {
   margin-right: 200px;
   margin-left: 200px;
 }
+
+/*.productGrid or display? {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 80vh;
+  width: 100%;
+  overflow: scroll;
+  padding: 10px;
+}*/

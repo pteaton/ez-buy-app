@@ -17,7 +17,7 @@
     <nav>
       <% if(loggedIn) { %>
         You are logged in as <%= username %>
-        <a href="/auth/logout">Log out</a>
+        <a href="/auth/logout">Log out</a> 
       <% } else { %>
         <a href="/auth/signup">Signup for free!</a>
         |
@@ -32,6 +32,8 @@
       <a href="/products/new">Add new product</a>
       |
       <a href="/users/<%= userId %>/products">My products</a>
+      |
+      <a href="/users/<%= session.userId %>/edit">Edit Your Account</a>
       |
       <a href="/auth/logout">Log out</a>
     <% } %>

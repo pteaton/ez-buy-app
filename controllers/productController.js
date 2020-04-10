@@ -131,7 +131,9 @@ router.delete('/:id', async (req, res, next) => {
     const deletedProduct = await
     Product.findOneAndRemove(req.params.id)
     console.log(deletedProduct)
-    res.redirect('/products')
+    res.redirect('products/home.ejs', {
+      userId: req.session.userId
+    })
   }
   catch(err) {
     next(err)
