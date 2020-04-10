@@ -57,7 +57,10 @@ router.get('/', async (req, res, next ) => {
 
 // New route
 router.get('/new', (req, res) => {
-  res.render('products/new.ejs')
+
+  res.render('products/new.ejs', {
+    userId: req.session.userId
+  })
 })
 
 // show from GET route log in
@@ -141,7 +144,10 @@ router.get('/:id/edit', async (req, res, next) => {
     const editedProduct = await
     Product.findById(req.params.id)
     console.log(editedProduct)
-    res.render('products/edit.ejs', {product: editedProduct})
+    res.render('products/edit.ejs', {
+      product: editedProduct,
+      userId: req.session.userId
+    })
   }
   catch(err) {
     next(err)

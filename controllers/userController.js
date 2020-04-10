@@ -4,17 +4,17 @@ const Product = require('../models/product')
 const User = require('../models/user')
 
 // GET route -- /:id
-router.get('/:id', async (req, res, next) => {
+router.get('/:userId/products', async (req, res, next) => {
   try {
-    const foundUser = await User.findById(req.params.id)
-    const productsToBeSoldByUser = await Product.find({ foundUser: req.params.id }).populate('user')
+    const productsToBeSoldByUser = await Product.find({ user: req.params.userId }).populate('user')
+    const user = await User.findById(req.params.userId)
     console.log("here is show page for user")
-    console.log(foundUser)
+    console.log(user)
     console.log(productsToBeSoldByUser)
     res.render('users/show.ejs', {
-      user: foundUser,
+      user: user,
       products: productsToBeSoldByUser,
-      userId: req.session.userId
+      userId: user.id
     })
 
   } catch(err) {

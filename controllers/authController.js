@@ -6,7 +6,9 @@ const bcrypt = require('bcrypt')
 
 // route to signup
 router.get('/signup', (req, res) => {
-    res.render('auth/signup.ejs')
+    res.render('auth/signup.ejs', {
+      userId: req.session.userId
+    })
 })
 
 // specify route to signup
@@ -39,6 +41,7 @@ router.post('/signup', async (req, res, next) => {
 
             req.session.loggedIn = true
             req.session.userId = createdUser._id
+            res.session.userId = userId
             req.session.username = createdUser.username
             req.session.message = `Thanks for signing up, ${createdUser.username}`
             res.redirect('/')
