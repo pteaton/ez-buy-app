@@ -125,7 +125,6 @@ router.delete('/:id', async (req, res, next) => {
 
     fs.unlink(`./${foundProduct.productImage}`, (err) => {
       if (err) throw err;
-      console.log('');
     });
 
     const deletedProduct = await Product.findByIdAndRemove(req.params.id)

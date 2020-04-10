@@ -1,7 +1,7 @@
 <%- include('../partials/header.ejs') %>
 
 
-<form method="POST" action="/auth/signup">
+<form method="POST" action="/users/<%= userId %>?_method=DELETE">
   <fieldset>
 <div class="form-group">
   <label for="firstname">First Name:</label>
@@ -23,8 +23,6 @@
 <div class="form-group">
   <label for="address">Your address:</label>
     <p> <%= user.address %></p>
-
-
 </div>
 
 </fieldset>
@@ -35,6 +33,17 @@ We'll never share your information with anyone else.
 <br>
 
 <a href="/users/<%= userId %>/updateProfile">Update your Profile</a>
+
+<br>
+
+
+    <button class="btn btn-primary">Delete Account</button>
+    <br>
+    <small>
+    Deleting your account will remove all your products and information.
+    </small>
+
 </form>
+
 
 <%- include('../partials/footer.ejs') %>
