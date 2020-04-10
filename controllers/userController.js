@@ -61,14 +61,11 @@ router.put('/:userId', async (req, res, next) => {
 
   console.log("updatedUser");
   console.log(updatedUser);
-    res.render('users/viewProfile.ejs', {
-      user: updatedUser,
-      userId: req.session.userId
-    })
-  }
-  catch (err) {
-    next (err)
-  }
+  res.redirect('/users/viewProfile')
+    }
+    catch (err) {
+      next (err)
+    }
 })
 
 
