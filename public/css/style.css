@@ -1,5 +1,5 @@
 body {
-  /*background-image: url('https://www.publicdomainpictures.net/pictures/310000/nahled/floral-wallpaper-background-1569424634uYU.jpg'); 
+  /*background-image: url('https://www.publicdomainpictures.net/pictures/310000/nahled/floral-wallpaper-background-1569424634uYU.jpg');
   background-size: cover;*/
   font-family: 'Montserrat', sans-serif;
   text-align: center;
@@ -11,7 +11,7 @@ img {
   border-radius: 20px;
   margin: 1%;
   border: 1px solid black;
-/* 
+/*
   display: inline-block;
   vertical-align: top;
   justify-content: center;
@@ -36,6 +36,12 @@ nav {
   background-color: red;
   color: white;
 }
+
+.successMessage {
+  background-color: green;
+  color: white;
+}
+
 .user-bio {
   margin-right: 200px;
   margin-left: 200px;

@@ -44,11 +44,11 @@ router.get('/:userId/viewProfile', async (req, res, next) => {
 // GET route edit page
 router.get('/:userId/updateProfile', async (req, res, next) => {
   try {
-    const foundUser = await User.findById(req.params.id)
+    const foundUser = await User.findById(req.params.userId)
 
     res.render('users/updateProfile.ejs', {
       user: foundUser,
-      userId: req.session.useId
+      userId: req.session.userId
     })
   } catch (error) {
     next(error)
@@ -57,11 +57,10 @@ router.get('/:userId/updateProfile', async (req, res, next) => {
 
 router.put('/:userId', async (req, res, next) => {
   try {
-	const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {new: true})
+	const updatedUser = await User.findByIdAndUpdate(req.params.userId, req.body, {new: true})
 
-  console.log("updatedUser");
-  console.log(updatedUser);
-  res.redirect('/users/viewProfile')
+  req.session.message = "Profile has been updated"
+  res.redirect('/products')
     }
     catch (err) {
       next (err)
