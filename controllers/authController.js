@@ -43,7 +43,7 @@ router.post('/signup', async (req, res, next) => {
             req.session.userId = createdUser._id
             req.session.username = createdUser.username
             req.session.message = `Thanks for signing up, ${createdUser.username}`
-            res.redirect('/')
+            res.redirect('/products')
         }
     } catch (err) {
         next(err)
