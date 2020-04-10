@@ -5,7 +5,7 @@ const multer = require('multer')
 const fs = require('fs')
 const Product = require('../models/product')
 const User = require('../models/user')
-const requireAuth = require('../lib/requireAuth')
+// const requireAuth = require('../lib/requireAuth')
 
 // MULTER CONFIGURATION
 // Saving image and uploading image using multer
@@ -46,7 +46,6 @@ router.get('/', async (req, res, next ) => {
 
     console.log("here is product find route");
     console.log(findProducts);
-    console.log(Product.populated('user'));
     res.render('products/home.ejs', {
       products: findProducts,
       userId: req.session.userId
@@ -82,20 +81,32 @@ router.get('/:id', async (req, res, next) => {
 // POST route -- product image create route
 router.post('/', upload.single('productImage'), async (req, res, next) => {
 
-  console.log(req.file);
   try {
+
+    // define user here
+    let currentUser = await User.findById( req.session.userId )
+    console.log("Here is the current user")
+    console.log(currentUser);
+
     const createNewProduct = ({
       title: req.body.title,
       price: req.body.price,
       description: req.body.description,
+      user: currentUser,
       productImage: req.file.path
 
     })
-    const createdNewProduct = await Product.create(createNewProduct)
-    console.log("here is product created");
-    console.log(createNewProduct);
-    res.locals.message = `Product ${createdNewProduct} was added.`
-    res.redirect('/products')
+    if (req.session.loggedIn == true) {
+      const createdNewProduct = await Product.create(createNewProduct)
+      console.log("here is product created");
+      console.log(createNewProduct);
+      res.locals.message = `Product was added.`
+      res.redirect('/products')
+    }
+    else {
+      res.locals.message = `Please log in first to add photos`
+      res.redirect('/auth/login')
+    }
   }
   catch (err) {
     next (err)

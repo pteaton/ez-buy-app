@@ -44,14 +44,17 @@ app.use((req, res, next) => {
 // Controllers
 const authController = require('./controllers/authController')
 app.use('/auth', authController)
+
 const productController = require('./controllers/productController')
 app.use('/products', productController)
 
+const userController = require('./controllers/userController')
+app.use('/users', userController)
 
 // Get route for home
-app.get('/', (req, res) => {
-  res.render('home.ejs')
-})
+// app.get('/', (req, res) => {
+//   res.render('home.ejs')
+// })
 
 
 // 404 page
