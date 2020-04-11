@@ -58,6 +58,7 @@ router.delete('/:userId', async (req, res, next) => {
 
     const deletedProducts = await Product.remove({ user: req.params.userId })
     const deletedUser = await User.findOneAndRemove(req.params.userId)
+    await req.session.destroy()
     console.log('here is the deleted product')
     console.log(deletedProducts)
     res.redirect('/auth/signup')
