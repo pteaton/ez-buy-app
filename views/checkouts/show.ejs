@@ -2,16 +2,41 @@
 
 <h3>Welcome!</h3>
 
-<% products.forEach((product) => { %>
-  <p> Buyer - <%= product.user.username %> </p>
-  <p> Product - <%= product.title %> </p>
-  <p> price - <%= product.price %> </p>
+
+
+<div class="table">
+
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Number of orders:</th>
+      <th scope="col">Item</th>
+      <th scope="col">Price</th>
+      <% products.forEach((product) => { %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td> <%= product.title %>  </td>
+      <td> <%= product.price %>  </td>
+
 <% }) %>
+    </tr>
 
+  </tbody>
+</table>
+</div>
+  <% let total = 0 %>
+<% for (let i = 0; i < products.length; i++) { %>
+  <% total += products[i].price %>
 
+  <% } %>
 
+  <div class="totalAmount">
+    <td>Total</td><output class="total" name="total"> <%= total %> </output>
+  </div>
 
-
-
+  <button class="btn btn-primary" type="submit" >Complete Purchase</button>
 
 <%- include('../partials/footer.ejs') %>
