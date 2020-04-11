@@ -17,6 +17,7 @@ router.post('/signup', async (req, res, next) => {
         const createdUsername = req.body.username
         const createdPassword = req.body.password
 
+
         // if username already exists
         const userWithThisUsername = await User.findOne({
             username: createdUsername
@@ -36,7 +37,11 @@ router.post('/signup', async (req, res, next) => {
             // create user
             const createdUser = await User.create({
                 username: createdUsername,
-                password: securedPassword
+                password: securedPassword,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                address: req.body.address
             })
 
             req.session.loggedIn = true

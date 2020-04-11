@@ -42,6 +42,7 @@ const upload =  multer({
 // Get home route
 router.get('/', async (req, res, next ) => {
   try {
+
     const findProducts = await Product.find().populate('user')
 
     console.log("here is product find route");
@@ -124,16 +125,12 @@ router.delete('/:id', async (req, res, next) => {
 
     fs.unlink(`./${foundProduct.productImage}`, (err) => {
       if (err) throw err;
-      console.log('');
     });
 
-
-    const deletedProduct = await
-    Product.findOneAndRemove(req.params.id)
+    const deletedProduct = await Product.findByIdAndRemove(req.params.id)
+    console.log('here is the deleted product')
     console.log(deletedProduct)
-    res.redirect('products/home.ejs', {
-      userId: req.session.userId
-    })
+    res.redirect('/products')
   }
   catch(err) {
     next(err)
