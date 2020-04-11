@@ -5,7 +5,7 @@ const multer = require('multer')
 const fs = require('fs')
 const Product = require('../models/product')
 const User = require('../models/user')
-// const requireAuth = require('../lib/requireAuth')
+const requireAuth = require('../lib/requireAuth')
 
 // MULTER CONFIGURATION
 // Saving image and uploading image using multer
@@ -173,34 +173,39 @@ router.put('/:id',upload.single('productImage'), async (req, res, next) => {
 
   })
 
-// productId, transfer to UserId
+
+
+router.get('/checkouts/show', async (req, res, next) => {
+  try {
+    const findAllSelectedProducts = await Product.find({ user: req.session.userId }).populate('user')
+    res.render('checkouts/show.ejs', {
+      products: findAllSelectedProducts,
+      userId: req.session.userId
+    })
+  } catch (e) {
+    next (e)
+  }
+})
 
 // find specific product selected by user -- need buy button
-router.put('/select/:id', async (req, res, next) => {
+router.put('/select/:id',requireAuth, async (req, res, next) => {
   try {
 
     console.log("Here is product id for item being bought")
-    const selectedProduct = await Product.findByIdAndUpdate(req.params.id, {id: req.session.userId})
+    const findUser = await User.findById(req.session.userId)
+    const selectedProduct = await Product.findByIdAndUpdate(req.params.id, {user: findUser._id})
     console.log(req.params.id)
-      
-    //   selectedProduct.where({
-    //     id: selectedProduct.user.id
-    //   }).update({
-    //     id: req.session.userId
-    //   })
-    // console.log(req.session)
-    // console.log("here is the checkout user info")
-    console.log(selectedProduct)
-    res.render('checkouts/show.ejs', {
-      userId: req.session.userId
 
-    })
+    console.log(req.session)
+    console.log("here is the checkout user info")
+    console.log(selectedProduct)
+    res.redirect('/products')
   }
   catch(err) {
-    next(err)
+    next (err)
   }
-       
+
 })
- 
+
 
 module.exports = router
