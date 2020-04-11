@@ -11,7 +11,7 @@ router.get('/show', async (req, res, next) => {
   })
 })
 
-
+// display all the product of the current user
 
 
 

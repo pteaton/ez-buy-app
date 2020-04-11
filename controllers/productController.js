@@ -173,6 +173,6 @@ router.put('/:id',upload.single('productImage'), async (req, res, next) => {
 
   })
 
-
+// productId, transfer to UserId
 
 module.exports = router
