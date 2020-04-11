@@ -16,6 +16,11 @@
 			<a href="/products/<%= product.id %>">Read More</a>
 			</p>
 
+          <form method="POST" action="/products/select/<%= product.id %>?_method=PUT">
+
+    <button>Testing Buy</button>
+    </form>
+
 		<%  }) %>
 
 

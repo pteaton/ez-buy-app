@@ -175,4 +175,32 @@ router.put('/:id',upload.single('productImage'), async (req, res, next) => {
 
 // productId, transfer to UserId
 
+// find specific product selected by user -- need buy button
+router.put('/select/:id', async (req, res, next) => {
+  try {
+
+    console.log("Here is product id for item being bought")
+    const selectedProduct = await Product.findByIdAndUpdate(req.params.id, {id: req.session.userId})
+    console.log(req.params.id)
+      
+    //   selectedProduct.where({
+    //     id: selectedProduct.user.id
+    //   }).update({
+    //     id: req.session.userId
+    //   })
+    // console.log(req.session)
+    // console.log("here is the checkout user info")
+    console.log(selectedProduct)
+    res.render('checkouts/show.ejs', {
+      userId: req.session.userId
+
+    })
+  }
+  catch(err) {
+    next(err)
+  }
+       
+})
+ 
+
 module.exports = router
