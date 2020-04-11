@@ -28,15 +28,13 @@ GET route edit page
 router.get('/:userId/edit', async (req, res, next) => {
   try {
     const foundUser = await User.findById(req.params.id)
-    const currentUser = req.session.userId
-    const session = req.session
+    // const currentUser = req.session.userId
+    // const session = req.session
 
     messageToDisplay = req.session.message
     res.render('user/edit.ejs', {
       user: foundUser,
-      currentUser: currentUser,
-      message: messageToDisplay,
-      session: session
+      userId: req.session.userId
     })
   } catch (error) {
     next(error)
