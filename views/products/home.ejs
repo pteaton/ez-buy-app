@@ -10,7 +10,8 @@
       		<p>
       		<a href="./products/<%= product.id %>">
       		<%= 	product.title %></a> </p>
-    		<p> <%= product.price %> </p>
+    		<p> Price - $<%= product.price %> </p>
+        <p> Seller - <%= product.user.username %> </p>
     		<p><%= product.description.substring(0, 100) + "....."%>
 			<a href="/products/<%= product.id %>">Read More</a>
 			</p>

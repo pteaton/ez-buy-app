@@ -1,7 +1,10 @@
 const mongoose = require('mongoose')
 
 const checkoutSchema = new mongoose.Schema ({
-  created_on: Date,
+  created_on: {
+    type: Date,
+    default: Date.now()
+  },
   shipping: {
     type: String
     },
