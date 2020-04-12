@@ -7,7 +7,7 @@
 <table>
   <thead>
     <tr>
-      <th scope="col">Number of orders:</th>
+      <th scope="col">Update Cart:</th>
       <th scope="col">Item</th>
       <th scope="col">Price</th>
       <% user.products.forEach((product) => { %>
@@ -15,7 +15,10 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
+      <form method="POST" action="/checkouts/delete/<%= product.id %>?_method=DELETE">
+        <th scope="row"><button class= "btn btn-outline-danger btn-sm"> Remove</button></th>
+
+      </form>
       <td> <%= product.title %>  </td>
       <td> <%= product.price %>  </td>
 <% }) %>

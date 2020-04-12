@@ -71,4 +71,28 @@ router.post('/thankyou', async (req, res, next) => {
   }
 })
 
+
+// Delete route for user tto be able to delete products
+router.delete('/delete/:id', async (req, res, next) => {
+    try {
+      const foundUser = await User.findById(req.session.userId).populate('products')
+
+      console.log("req.params.id");
+      console.log(req.params.id);
+
+
+      for (let i = 0; i < foundUser.products.lentgh; i++) {
+        if (foundUser.products[i].id == req.params.id) {
+          foundUser.products.splice(i, 1)
+        }
+      }
+      await foundUser.save()
+      console.log(foundUser.products);
+      res.redirect('/checkouts/show')
+    }
+    catch (err) {
+        next (err)
+    }
+})
+
 module.exports = router
