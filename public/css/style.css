@@ -67,3 +67,7 @@ nav {
 .totalAmount {
   margin-left: 230px;
 }
+
+.btn {
+  border-radius: 10px;
+}
