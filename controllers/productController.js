@@ -178,6 +178,7 @@ router.put('/:id',upload.single('productImage'), async (req, res, next) => {
 router.get('/checkouts/show', async (req, res, next) => {
   try {
     const findAllSelectedProducts = await Product.find({ user: req.session.userId }).populate('user')
+
     res.render('checkouts/show.ejs', {
       products: findAllSelectedProducts,
       userId: req.session.userId
@@ -206,6 +207,19 @@ router.put('/select/:id',requireAuth, async (req, res, next) => {
   }
 
 })
+
+
+// Complete purchase route
+// router.post('/checkouts/show', async (res, req, next) => {
+//   try {
+//       // const findAllSelectedProducts = await Product.remove({ user: req.session.userId }).populate('user')
+//
+//     res.redirect('/products/checkouts/thankyou')
+//   }
+//   catch (err) {
+//       next (err)
+//   }
+// })
 
 
 module.exports = router

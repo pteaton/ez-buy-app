@@ -37,6 +37,10 @@
     <td>Total</td><output class="total" name="total"> <%= total %> </output>
   </div>
 
-  <button class="btn btn-primary" type="submit" >Complete Purchase</button>
+  <form class="" action="/products/checkouts/show" method="POST">
+
+    <button class="btn btn-primary" type="submit" >Complete Purchase</button>
+
+  </form>
 
 <%- include('../partials/footer.ejs') %>
