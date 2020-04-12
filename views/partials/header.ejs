@@ -9,11 +9,32 @@
   </head>
   <body>
 
+
+<div class="container">
+  <div class="row">
     <nav>
       <a href="/products">Products</a>
+
+    <% if (username) { %>
+          |
+          <a href="/products/new">Add new product</a>
+          |
+          <a href="/users/<%= userId %>/products">My products</a>
+          |
+          <a href="/users/<%= userId %>/viewProfile">View Profile</a>
+          | <a href="/checkouts/show">Checkout</a>
+          |
+          <a href="/auth/logout">Log out</a>
+          |
+        <% } %>
     </nav>
 
+  </div>
+</div>
 
+
+<div class="container">
+  <div class="row">
     <nav>
       <% if(loggedIn) { %>
         You are logged in as <%= username %>
@@ -25,18 +46,7 @@
       <% }  %>
     </nav>
 
-<nav>
 
-<% if (username) { %>
-      |
-      <a href="/products/new">Add new product</a>
-      |
-      <a href="/users/<%= userId %>/products">My products</a>
-      |
-      <a href="/users/<%= userId %>/viewProfile">View Profile</a>
-      | <a href="/checkouts/show">Checkout</a>
-      |
-      <a href="/auth/logout">Log out</a>
-      |
-    <% } %>
-</nav>
+  </div>
+
+</div>

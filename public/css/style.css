@@ -1,22 +1,10 @@
 body {
-  /*background-image: url('https://www.publicdomainpictures.net/pictures/310000/nahled/floral-wallpaper-background-1569424634uYU.jpg');
-  background-size: cover;*/
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   background-color: #f2f2f2;
   /* color: #ECF0F1; */
 }
-img {
-  width: 20%;
-  border-radius: 20px;
-  margin: 1%;
-  border: 1px solid black;
-/*
-  display: inline-block;
-  vertical-align: top;
-  justify-content: center;
-  align-items: center; */
-}
+
 form {
   margin-top: 50px;
   width: 50%;
@@ -52,6 +40,41 @@ nav {
   padding-right: 10px;
 }
 
+/* ProductImages */
+/* img {
+  width: 80%;
+  border-radius: 20px;
+  margin: 1%;
+  border: 1px solid black;
+
+} */
+.mainImage {
+  overflow: none;
+}
+
+.productImg {
+  width: 50vh;
+  height: 30vh;
+  border-radius: 20px;
+  margin: 1%;
+  border: 1px solid black;
+
+}
+
+
+.square {
+	display: inline-block;
+	vertical-align: top;
+	justify-content: center;
+	align-items: center;
+  margin-top: 100px;
+
+}
+
+/* .mainImage {
+  text-align: left;
+  width: 20%; */
+
 .table {
   display: flex;
   justify-content: center;
@@ -60,8 +83,6 @@ nav {
 
 .total {
   width: 30%;
-
-
 }
 
 .totalAmount {
@@ -70,4 +91,27 @@ nav {
 
 .btn {
   border-radius: 10px;
+}
+
+
+.reviews {
+  text-align: left;
+  margin-top: 50px;
+  margin-left: 470px;
+  width: 50%;
+}
+
+#review {
+  color: darkgoldenrod;
+}
+
+input.name {
+  border-radius: 15px;
+  border: 1px solid goldenrod;
+}
+
+textarea.text {
+  margin-top: 10px;
+  border-radius: 15px;
+  border: 1px solid darkgoldenrod;
 }

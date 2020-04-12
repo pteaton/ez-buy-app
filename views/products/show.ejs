@@ -25,16 +25,15 @@
 
     </form>
 
-<h4>See All reviews about this product</h4>
+<h4 id="review" > * Review this product *</h4>
 <form method="POST" action="/reviews/<%= product.id %>">
   <fieldset>
-    <div>
-      <label for="name">Your name:</label>
-      <input id="name" type="text" name="name" placeholder="your name">
+    <div class="name" >
+      <input class="name" id="name" type="text" name="name" placeholder="your name">
     </div>
-    <div>
-      <label for="text">Your review:</label>
-      <input id="text" type="text" name="text" placeholder="type your review here">
+    <div class="text" >
+      <textarea  class="text" id="text" name="text" rows="4" cols="50" placeholder="type your review here"></textarea>
+
     </div>
   </fieldset>
   <button class="btn btn-outline-primary btn-sm">Add Review</button>
@@ -43,12 +42,16 @@
 
 
 
-  <ul>
+  <ul class="reviews" >
     <% product.reviews.forEach((review) => { %>
       <li>
-        <small><%= review.name %> @ <%= review.date %></small>
-        <br />
+        <strong> <%= review.name %> </strong>
+        <br>
+        <%= review.date.toDateString() %>
+        <br>
         <%=review.text%>
+            <br />
+
       </li>
     <% }) %>
   </ul>

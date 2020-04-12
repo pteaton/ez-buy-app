@@ -29,6 +29,15 @@ router.post('/:productId', async (req, res, next) => {
 })
 
 
+// delete route for reviews
+// router.delete('/:reviewId', async (req, res, next) => {
+//   try {
+//     const foundProducts = await Product.findById()
+//   } catch (e) {
+//
+//   }
+// })
+
 
 
 
