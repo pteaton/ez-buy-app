@@ -174,39 +174,39 @@ router.put('/:id',upload.single('productImage'), async (req, res, next) => {
   })
 
 
-
-router.get('/checkouts/show', async (req, res, next) => {
-  try {
-    const findAllSelectedProducts = await Product.find({ user: req.session.userId }).populate('user')
-
-    res.render('checkouts/show.ejs', {
-      products: findAllSelectedProducts,
-      userId: req.session.userId
-    })
-  } catch (e) {
-    next (e)
-  }
-})
+// 
+// router.get('/checkouts/show', async (req, res, next) => {
+//   try {
+//     const findAllSelectedProducts = await Product.find({ user: req.session.userId }).populate('user')
+//
+//     res.render('checkouts/show.ejs', {
+//       products: findAllSelectedProducts,
+//       userId: req.session.userId
+//     })
+//   } catch (e) {
+//     next (e)
+//   }
+// })
 
 // find specific product selected by user -- need buy button
-router.put('/select/:id',requireAuth, async (req, res, next) => {
-  try {
-
-    console.log("Here is product id for item being bought")
-    const findUser = await User.findById(req.session.userId)
-    const selectedProduct = await Product.findByIdAndUpdate(req.params.id, {user: findUser._id})
-    console.log(req.params.id)
-
-    console.log(req.session)
-    console.log("here is the checkout user info")
-    console.log(selectedProduct)
-    res.redirect('/products')
-  }
-  catch(err) {
-    next (err)
-  }
-
-})
+// router.put('/select/:id',requireAuth, async (req, res, next) => {
+//   try {
+//
+//     console.log("Here is product id for item being bought")
+//     const findUser = await User.findById(req.session.userId)
+//     const selectedProduct = await Product.findByIdAndUpdate(req.params.id, {user: findUser._id})
+//     console.log(req.params.id)
+//
+//     console.log(req.session)
+//     console.log("here is the checkout user info")
+//     console.log(selectedProduct)
+//     res.redirect('/products')
+//   }
+//   catch(err) {
+//     next (err)
+//   }
+//
+// })
 
 
 // Complete purchase route

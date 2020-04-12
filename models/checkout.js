@@ -13,11 +13,11 @@ const checkoutSchema = new mongoose.Schema ({
     required: true,
     ref: 'User'
   },
- product: {
-    type: mongoose.SchemaTypes.ObjectId,
+ products: [{
+    type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'Product'
-}
+}]
 })
 
 const Checkout = mongoose.model('Checkout', checkoutSchema)
