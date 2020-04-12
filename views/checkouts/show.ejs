@@ -29,8 +29,12 @@
   <% total += user.products[i].price %>
   <% } %>
 
+<% let tax = 10 %>
   <div class="totalAmount">
-    <td>Total</td><output class="total" name="total"> <%= total %> </output>
+    <td>Tax</td><output class="total" name="tax"> <%= tax = tax * total / 100%> </output>
+  </div>
+  <div class="totalAmount">
+    <td>Total</td><output class="total" name="total"> <%= total + tax %> </output>
   </div>
 
   <form class="" action="/checkouts/thankyou" method="POST">
