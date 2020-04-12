@@ -54,6 +54,9 @@ app.use('/users', userController)
 const checkoutController = require('./controllers/checkoutController')
 app.use('/checkouts', checkoutController)
 
+const reviewController = require('./controllers/reviewController')
+app.use('/reviews', reviewController)
+
 // Get route for home
 // app.get('/', (req, res) => {
 //   res.render('home.ejs')

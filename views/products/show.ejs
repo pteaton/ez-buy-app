@@ -25,4 +25,39 @@
 
     </form>
 
+<h4>See All reviews about this product</h4>
+<form method="POST" action="/reviews/<%= product.id %>">
+  <fieldset>
+    <div>
+      <label for="name">Your name:</label>
+      <input id="name" type="text" name="name" placeholder="your name">
+    </div>
+    <div>
+      <label for="text">Your review:</label>
+      <input id="text" type="text" name="text" placeholder="type your review here">
+    </div>
+  </fieldset>
+  <button class="btn btn-outline-primary btn-sm">Add Review</button>
+</form>
+
+
+
+
+  <ul>
+    <% product.reviews.forEach((review) => { %>
+      <li>
+        <small><%= review.name %> @ <%= review.date %></small>
+        <br />
+        <%=review.text%>
+      </li>
+    <% }) %>
+  </ul>
+
+
+
+
+
+
+
+
 <%- include('../partials/footer.ejs') %>

@@ -80,14 +80,20 @@ router.delete('/delete/:id', async (req, res, next) => {
       console.log("req.params.id");
       console.log(req.params.id);
 
-
-      for (let i = 0; i < foundUser.products.lentgh; i++) {
-        if (foundUser.products[i].id == req.params.id) {
-          foundUser.products.splice(i, 1)
-        }
+      foundUser.prroducts = function(product) {
+        foundUser.products.splice(foundUser.products.indexOf(product), 1)
       }
+
+      // for (let i = 0; i < foundUser.products.lentgh; i++) {
+      //   if (foundUser.products[i].id == req.params.id) {
+      //
+      //     foundUser.products.splice(foundUser.products, 1)
+      //   }
+      // }
+
+      // STILL WORKING ON IT -- TA HELP
       await foundUser.save()
-      console.log(foundUser.products);
+      console.log(foundUser);
       res.redirect('/checkouts/show')
     }
     catch (err) {

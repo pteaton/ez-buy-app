@@ -13,8 +13,6 @@ const reviewSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-
-  // profuct id in here
 })
 
 const Review = mongoose.model('Review', reviewSchema)

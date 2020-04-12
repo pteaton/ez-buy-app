@@ -24,7 +24,11 @@ const productSchema = new mongoose.Schema ({
      type: mongoose.Schema.Types.ObjectId,
      ref: 'User',
      required: true
- }
+ },
+ reviews: [{
+   type: mongoose.Schema.Types.ObjectId,
+   ref: 'Review'
+ }]
 })
 
 const Product =  mongoose.model('Product', productSchema)
