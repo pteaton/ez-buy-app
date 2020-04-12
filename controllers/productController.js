@@ -67,7 +67,7 @@ router.get('/new', (req, res) => {
 // show from GET route log in
 router.get('/:id', async (req, res, next) => {
   try {
-    const foundProduct = await Product.findById(req.params.id).populate('user')
+    const foundProduct = await Product.findById(req.params.id).populate('user').populate('reviews')
     console.log("here is product from show route")
     console.log(foundProduct)
     console.log(req.session);
@@ -174,7 +174,7 @@ router.put('/:id',upload.single('productImage'), async (req, res, next) => {
   })
 
 
-// 
+//
 // router.get('/checkouts/show', async (req, res, next) => {
 //   try {
 //     const findAllSelectedProducts = await Product.find({ user: req.session.userId }).populate('user')

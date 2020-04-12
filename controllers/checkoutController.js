@@ -80,9 +80,13 @@ router.delete('/delete/:id', async (req, res, next) => {
       console.log("req.params.id");
       console.log(req.params.id);
 
-      foundUser.prroducts = function(product) {
-        foundUser.products.splice(foundUser.products.indexOf(product), 1)
-      }
+      // if (foundUser.products.id == req.params.id) {
+      //   foundUser.products = function() {
+      //     foundUser.products.splice(foundUser.products.indexOf(foundUser.products), 1)
+      //   }
+      //
+      // }
+      foundUser.products.filter()
 
       // for (let i = 0; i < foundUser.products.lentgh; i++) {
       //   if (foundUser.products[i].id == req.params.id) {
