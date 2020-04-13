@@ -40,20 +40,23 @@
 </form>
 
 
-
-
   <ul class="reviews" >
     <% product.reviews.forEach((review) => { %>
       <li>
         <strong> <%= review.name %> </strong>
+          <strong> <%= review.id %> </strong>
         <br>
         <%= review.date.toDateString() %>
         <br>
         <%=review.text%>
             <br />
 
+            <form method="POST" action="/reviews/<%= product.id%>/<%= review.id %>?_method=DELETE">
+              <button class= "btn btn-outline-danger btn-sm"> Remove</button>
+            </form>
       </li>
     <% }) %>
+
   </ul>
 
 

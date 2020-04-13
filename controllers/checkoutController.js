@@ -76,8 +76,6 @@ router.post('/thankyou', async (req, res, next) => {
 router.delete('/delete/:id', async (req, res, next) => {
     try {
       const foundUser = await User.findById(req.session.userId).populate('products')
-      console.log("req.params.id");
-      console.log(req.params.id);
 
       for (let i = 0; i < foundUser.products.length; i++) {
         if (foundUser.products[i].id == req.params.id) {
