@@ -1,31 +1,37 @@
-
 <%- include('../partials/header.ejs') %>
-<h3>Welcome to ez-buy</h3>
+    <h3>Welcome to ez-buy</h3>
 
-<p class="successMessage"> <%= message %> </p>
+    <p class="successMessage">
+        <%= message %>
+    </p>
 
-  <div class="square">
+    <%  products.forEach((product) => { %>
+        <div class="square">
+            <div class="productCard">
 
-   <div class=" productImg">
+                <img class="productImg" src="<%= product.productImage %>">
 
-     <%  products.forEach((product) => { %>
-      <img class="productImg" src="<%= product.productImage %>">
-   </div>
+                <p>
+                    <a href="./products/<%= product.id %>">
+                        <%= 	product.title %>
+                    </a>
+                </p>
+                <p> Price - $
+                    <%= product.price %>
+                </p>
+                <p> Seller -
+                    <%= product.user.username %>
+                </p>
+                <p>
+                    <%= product.description.substring(0, 100) + "....."%>
+                        <a href="/products/<%= product.id %>">Read More</a>
+                </p>
+                <form method="POST" action="/checkouts/select/<%= product.id %>">
+                    <button class="btn btn-success">Add to cart</button>
+                </form>
 
-      <p>
-         <a href="./products/<%= product.id %>">
-         <%= 	product.title %></a>
-      </p>
-      <p> Price - $<%= product.price %> </p>
-      <p> Seller - <%= product.user.username %> </p>
-      <p><%= product.description.substring(0, 100) + "....."%>
-         <a href="/products/<%= product.id %>">Read More</a>
-      </p>
-      <form method="POST" action="/checkouts/select/<%= product.id %>">
-         <button class="btn btn-success">Add to cart</button>
-      </form>
-       <%  }) %>
-  </div>
+            </div>
+        </div>
+        <%  }) %>
 
-
-<%- include('../partials/footer.ejs') %>
+            <%- include('../partials/footer.ejs') %>

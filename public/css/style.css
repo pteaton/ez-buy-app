@@ -53,6 +53,7 @@ nav {
 }
 
 .productImg {
+  background-color: green;
   width: 50vh;
   height: 30vh;
   border-radius: 20px;
@@ -61,8 +62,17 @@ nav {
 
 }
 
+.productCard {
+  min-width: 10vw;
+  max-width: 30vw;
+  /* max-width: 500px; */
+  background-color: blue;
+  margin: 5px;;
+  padding: 10px;
+}
 
 .square {
+  background-color: purple;
 	display: inline-block;
 	vertical-align: top;
 	justify-content: center;

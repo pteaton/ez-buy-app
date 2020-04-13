@@ -65,7 +65,7 @@ router.get('/new', (req, res) => {
 })
 
 // show from GET route log in
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', requireAuth, async (req, res, next) => {
   try {
     const foundProduct = await Product.findById(req.params.id).populate('user').populate('reviews')
     console.log("here is product from show route")
