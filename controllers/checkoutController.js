@@ -73,56 +73,26 @@ router.post('/thankyou', async (req, res, next) => {
 
 
 // Delete route for user tto be able to delete products
-// router.delete('/delete/:id', async (req, res, next) => {
-//     try {
-//       const foundUser = await User.findById(req.session.userId).populate('products')
-//       //
-//       // console.log("req.params.id");
-//       // console.log(req.params.id);
-//
-//
-//       // foundUser.products.forEach((product) => {
-//       //   if (product.id == req.params.id) {
-//       //     product.filter()
-//         }
-//         // product.filter(product => product.title !== 'Pikachu the detective	')
-//       })
-//       // console.log("here is the deleted products");
-//       // console.log(product);
-//
-//
-//       // if (foundUser.products.id == req.params.id) {
-//       //   foundUser.products = function() {
-//       //     foundUser.products.splice(foundUser.products.indexOf(foundUser.products), 1)
-//       //   }
-//       //
-//       // }
-//       // let products = foundUser.products
-//       // products.filter(product => product.title !== 'Pikachu the detective	')
-//       //
-//       //   console.log("here is the first products");
-//       // console.log(products);
-//
-//       // for (let i = 0; i < foundUser.products.len tgh; i++) {
-//       //   if (foundUser.products[i].id == req.params.id) {
-//       //
-//       //     foundUser.products.splice(foundUser.products, 1)
-//       //   }
-//       // }
-//       // console.log("here is the products");
-//       // console.log(products)
-//
-//
-//       // STILL WORKING ON IT -- TA HELP
-//       // await foundUser.save()
-//       //
-//       // console.log("here is the foundUser product");
-//       // console.log(foundUser);
-//       // res.redirect('/checkouts/show')
-//     }
-//     catch (err) {
-//         next (err)
-//     }
-// })
+router.delete('/delete/:id', async (req, res, next) => {
+    try {
+      const foundUser = await User.findById(req.session.userId).populate('products')
+      console.log("req.params.id");
+      console.log(req.params.id);
+
+      for (let i = 0; i < foundUser.products.length; i++) {
+        if (foundUser.products[i].id == req.params.id) {
+
+          foundUser.products.splice(i, 1)
+        }
+      }
+
+      await foundUser.save()
+
+      res.redirect('/checkouts/show')
+    }
+    catch (err) {
+        next (err)
+    }
+})
 
 module.exports = router
