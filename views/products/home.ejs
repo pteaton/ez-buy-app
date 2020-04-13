@@ -1,5 +1,6 @@
 <%- include('../partials/header.ejs') %>
-    <h3>Welcome to ez-buy</h3>
+    <h6>ez-buy</h6>
+    <h5>BUY AND SELL ANY PRODUCT IN MINUTES!</h5>
 
     <p class="successMessage">
         <%= message %>
@@ -16,19 +17,18 @@
                         <%= 	product.title %>
                     </a>
                 </p>
-                <p> Price - $
-                    <%= product.price %>
-                </p>
-                <p> Seller -
-                    <%= product.user.username %>
-                </p>
-                <p>
+
+                <p class="subs" >
                     <%= product.description.substring(0, 100) + "....."%>
-                        <a href="/products/<%= product.id %>">Read More</a>
+                        <a class="subtags" href="/products/<%= product.id %>">Read More</a>
                 </p>
+
                 <form method="POST" action="/checkouts/select/<%= product.id %>">
-                    <button class="btn btn-success">Add to cart</button>
+                    <button class="add btn btn-success">Add to cart</button>
                 </form>
+                <div class="price">
+                  Only $ <%= product.price %>
+                </div>
 
             </div>
         </div>
