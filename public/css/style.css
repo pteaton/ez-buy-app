@@ -196,13 +196,20 @@ td {
   padding: 10px;
 }
 
-.updateProfile {
-  margin-bottom: 50px;
+.deleteProfile {
+  margin-top: 50px;
 }
 
 .update {
   color: blue;
 }
+
+/* checkout */
+.purchasebtn {
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
 #review {
   color: darkgoldenrod;
   margin-top: 50px;

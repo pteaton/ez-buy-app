@@ -5,10 +5,16 @@
   <ul>
     <% products.forEach((product) => { %>
       <li>
-        <a href="/products/<%= product.id %>"><%= product.title %></a>
+        <a class="subtags" href="/products/<%= product.id %>"> <%= product.title %></a>
+
+        <br>
+
+        <output> Selling price: $<%= product.price %> </output>
+        <output> (Posted on: <%= product.posted.toDateString() %>) </output>
       </li>
       <li>
         <p> <%= product.description %> </p>
+        <hr>
       </li>
       <li>
         <img class="productImg"src="/<%=product.productImage%>"></p>
