@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt')
 // route to signup
 router.get('/signup', (req, res) => {
     res.render('auth/signup.ejs', {
-      userId: req.session.userId
+        userId: req.session.userId
     })
 })
 
@@ -69,39 +69,35 @@ router.post('/login', async (req, res, next) => {
 
         // if user does not exist
         if (!user) {
-          console.log(user);
             req.session.message = "Username or Password is invalid"
             res.redirect('/auth/login')
-        }
-        else {
-          const ifUserInfoIsValid = bcrypt.compareSync(req.body.password, user.password)
+        } else {
+            const ifUserInfoIsValid = bcrypt.compareSync(req.body.password, user.password)
 
-          if (ifUserInfoIsValid) {
-            req.session.loggedIn = true
-            req.session.userId = user.id
-            req.session.username = user.username
-            req.session.message = `Welcome back ${user.username}, What do you want to buy?`
+            if (ifUserInfoIsValid) {
+                req.session.loggedIn = true
+                req.session.userId = user.id
+                req.session.username = user.username
+                req.session.message = `Welcome back ${user.username}, What do you want to buy?`
 
-            // remmeber to redirect on the profuct's home page
-            res.redirect('/products')
-          }
-          else  {
-            req.session.message = `Username or Password is not correct.`
-            res.redirect('/auth/login')
-          }
+                // remmeber to redirect on the profuct's home page
+                res.redirect('/products')
+            } else {
+                req.session.message = `Username or Password is not correct.`
+                res.redirect('/auth/login')
+            }
 
         }
 
-    }
-    catch (err) {
+    } catch (err) {
         next(err)
     }
 })
 
 
 router.get('/logout', async (req, res) => {
-  await req.session.destroy()
-  res.redirect('/auth/login')
+    await req.session.destroy()
+    res.redirect('/auth/login')
 })
 
 

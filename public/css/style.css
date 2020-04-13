@@ -14,9 +14,7 @@ form {
 input, textarea {
   text-align: center;
 }
-footer {
-  margin-top: 200px;
-}
+
 nav {
   margin-top: 50px;
 }
@@ -65,13 +63,14 @@ a {
   float: left;
   margin-right: 450px;
   font-size:2em;
-  margin-bottom: -30px;
+  /* margin-bottom: -30px; */
   color: #EA3470;
 }
 
 .restRoutes {
   float: right;
   font-size: 1em;
+  margin-top: -30px;
 }
 
 .productImg {
@@ -152,6 +151,9 @@ font-family: 'Josefin Slab', serif;
   width: 50%;
 }
 
+.update {
+  color: blue;
+}
 #review {
   color: darkgoldenrod;
 }
@@ -165,4 +167,15 @@ textarea.text {
   margin-top: 10px;
   border-radius: 15px;
   border: 1px solid darkgoldenrod;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+   /* margin-top: 230px; */
+  background-color: #876F68;
+ font-size: 1.5em;
+  padding: 5px; 0px, 5px, 0px;
 }

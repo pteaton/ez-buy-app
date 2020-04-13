@@ -19,7 +19,7 @@
 
       <%  if (userId == product.user.id) { %>
               <button class="btn btn-primary">Delete</button> %>
-              <a href="/products/<%= product.id %>/edit">
+              <a class="btn btn-primary" href="/products/<%= product.id %>/edit">
             Update the product!</a>
       <%  } %>
 
@@ -44,7 +44,6 @@
     <% product.reviews.forEach((review) => { %>
       <li>
         <strong> <%= review.name %> </strong>
-          <strong> <%= review.id %> </strong>
         <br>
         <%= review.date.toDateString() %>
         <br>
