@@ -3,7 +3,70 @@
 
 <form method="POST" action="/users/<%= userId %>?_method=DELETE">
   <fieldset>
-<div class="form-group">
+
+    <table class="profile" >
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>First Name: </td>
+          <td><%= user.firstName %></td>
+        </tr>
+
+        <tr>
+          <td>Last Name: </td>
+          <td><%= user.lastName %></td>
+        </tr>
+
+        <tr>
+          <td>Email:</td>
+          <td><%= user.email %></td>
+        </tr>
+
+        <tr>
+          <td>Address: </td>
+          <td><%= user.address %></td>
+        </tr>
+
+
+      </tbody>
+    </table>
+    <small>
+    We'll never share your information with anyone else.
+    </small>
+    <br>
+    <a class="updateProfile btn btn-outline-primary" href="/users/<%= userId %>/updateProfile">Update your Profile</a>
+    <br>
+
+    <small>
+    Deleting your account will remove all your products and information.
+    </small>
+    <br>
+    <button class="btn btn-outline-primary">Delete Account</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="form-group">
   <label for="firstname">First Name:</label>
   <output name="firstName"><%= user.firstName %></output>
 
@@ -44,6 +107,6 @@ We'll never share your information with anyone else.
     </small>
 
 </form>
-
+ -->
 
 <%- include('../partials/footer.ejs') %>

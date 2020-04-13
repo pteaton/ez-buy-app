@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs') %>
 
-  <h3>New Route for products</h3>
+  <h3>Upload a picture here!</h3>
 
   <form action="/products" method="POST" enctype="multipart/form-data">
 
@@ -32,7 +32,7 @@
       <br>
       <textarea
       name="description"
-      rows="8" cols="50"
+      rows="8" cols="70"
       id="description"
       placeholder="Say something about your product..">
       </textarea>
@@ -48,7 +48,7 @@
     </fieldset>
 
   <br>
-    <button type="submit" class="btn btn-primary">Add new product</button>
+    <button type="submit" class="btn btn-block btn-primary">Add new product</button>
 
     <br>
     <small>

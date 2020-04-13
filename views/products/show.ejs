@@ -5,21 +5,24 @@
   <h3>Show page for <%= product.title %></h3>
 
     <img class="productImg" src="/<%= product.productImage %> ">
-
-    <p> seller:  <%= product.user.username %> </p>
-
-    <p> Posted on <%= product.posted %>  </p>
-
-    <p> Price is $<%= product.price %> </p>
-    <p> <%= product.description %> </p>
+    <br>
+    <strong>Product by: <%= product.user.username %> </strong>
+    <br>
+    <strong>Posted on: <%= product.posted.toDateString() %> </strong>
+    <br>
+    <strong> Asking price: $<%= product.price %> </strong>
+      <br>
+  <article class="description">
+    <%= product.description %>
+  </article>
 
 
 
     <form method="POST" action="/products/<%= product.id %>?_method=DELETE">
 
       <%  if (userId == product.user.id) { %>
-              <button class="btn btn-primary">Delete</button> %>
-              <a class="btn btn-primary" href="/products/<%= product.id %>/edit">
+              <button class="btndelete btn btn-outline-primary">Delete</button> %>
+              <a class="updatebtn btn btn-outline-primary" href="/products/<%= product.id %>/edit">
             Update the product!</a>
       <%  } %>
 
@@ -31,12 +34,13 @@
     <div class="name" >
       <input class="name" id="name" type="text" name="name" placeholder="your name">
     </div>
+
     <div class="text" >
       <textarea  class="text" id="text" name="text" rows="4" cols="50" placeholder="type your review here"></textarea>
-
     </div>
+
+    <button class="reviewbtn btn btn-outline-primary btn-sm">Add Review</button>
   </fieldset>
-  <button class="btn btn-outline-primary btn-sm">Add Review</button>
 </form>
 
 
