@@ -52,7 +52,7 @@ nav {
 }
 
 a {
-    color: #FFFAF0;
+  color: #FFFAF0;
 }
 
 .subtags {
@@ -110,7 +110,7 @@ h6 {
 }
 
 h5 {
-font-family: 'Josefin Slab', serif;
+  font-family: 'Josefin Slab', serif;
 }
 
 .price {
@@ -170,12 +170,12 @@ textarea.text {
 }
 
 footer {
-  position: absolute;
+  /*position: absolute;*/
   bottom: 0;
   width: 100%;
   height: 2.5rem;
-   /* margin-top: 230px; */
+   margin-top: 230px; 
   background-color: #876F68;
- font-size: 1.5em;
+  font-size: 1.5em;
   padding: 5px; 0px, 5px, 0px;
 }

@@ -80,7 +80,7 @@ router.post('/login', async (req, res, next) => {
                 req.session.username = user.username
                 req.session.message = `Welcome back ${user.username}, What do you want to buy?`
 
-                // remmeber to redirect on the profuct's home page
+                // remember to redirect on the product's home page
                 res.redirect('/products')
             } else {
                 req.session.message = `Username or Password is not correct.`
