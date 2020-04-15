@@ -109,7 +109,7 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
     }
 })
 
-// render picture @ /products/:id/img
+// Route for rendering picture /products/:id/img
 router.get("/:id/img", async (req, res, next) => {
   try {
     const findProduct = await Product.findById(req.params.id).populate('user');
