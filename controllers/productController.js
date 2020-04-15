@@ -5,18 +5,21 @@ const multer = require('multer')
 const fs = require('fs')
 const Product = require('../models/product')
 const User = require('../models/user')
+const storage = multer.memoryStorage()
+const uploads = multer({storage: storage})
 const requireAuth = require('../lib/requireAuth')
 
 // MULTER CONFIGURATION
 // Saving image and uploading image using multer
-const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, './uploads/')
-    },
-    filename: function(req, file, cb) {
-        cb(null, new Date().toISOString() + file.originalname)
-    }
-})
+
+// const storage = multer.diskStorage({
+//     destination: function(req, file, cb) {
+//         cb(null, './uploads/')
+//     },
+//     filename: function(req, file, cb) {
+//         cb(null, new Date().toISOString() + file.originalname)
+//     }
+// })
 
 // Filter by image size/file type
 const fileFilter = (req, file, cb) => {
@@ -36,7 +39,21 @@ const upload = multer({
     fileFilter: fileFilter
 })
 
+// render picture @ /rating-pictures/:id/img
+router.get("/img", async (req, res, next) => {
+  try {
+    const findProduct = await Product.find().populate('user');
 
+    console.log("res");
+    console.log(res);
+    res.set("Content-Type", findProduct.productImage.contentType);
+
+
+    res.send(findProduct.image.data);
+  } catch (err) {
+    next(err);
+  }
+});
 
 // Get home route
 router.get('/', async (req, res, next) => {
@@ -87,7 +104,11 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
             price: req.body.price,
             description: req.body.description,
             user: currentUser,
-            productImage: req.file.path
+            productImage: {
+              data: req.file.buffer,
+              contentType: req.file.mimetype
+            }
+            // req.file.path // change Schema to store in the database
 
         })
         if (req.session.loggedIn == true) {

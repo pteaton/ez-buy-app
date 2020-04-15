@@ -13,8 +13,8 @@ const productSchema = new mongoose.Schema ({
    // required: true
  },
  productImage: {
-   type: String,
-   required: true
+   data: Buffer,
+   contentType: String
  },
  posted: {
    type: Date,
