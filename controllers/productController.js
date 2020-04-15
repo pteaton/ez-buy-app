@@ -39,21 +39,6 @@ const upload = multer({
     fileFilter: fileFilter
 })
 
-// render picture @ /rating-pictures/:id/img
-router.get("/img", async (req, res, next) => {
-  try {
-    const findProduct = await Product.find().populate('user');
-
-    console.log("res");
-    console.log(res);
-    res.set("Content-Type", findProduct.productImage.contentType);
-
-
-    res.send(findProduct.image.data);
-  } catch (err) {
-    next(err);
-  }
-});
 
 // Get home route
 router.get('/', async (req, res, next) => {
@@ -124,6 +109,18 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
     }
 })
 
+// render picture @ /products/:id/img
+router.get("/:id/img", async (req, res, next) => {
+  try {
+    const findProduct = await Product.findById(req.params.id).populate('user');
+    console.log("res");
+    console.log(res);
+    res.set("Content-Type", findProduct.productImage.contentType);
+    res.send(findProduct.productImage.data);
+  } catch (err) {
+    next(err);
+  }
+});
 
 // Delete route
 router.delete('/:id', async (req, res, next) => {
