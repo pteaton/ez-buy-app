@@ -43,19 +43,19 @@ router.get('/:userId/viewProfile', async (req, res, next) => {
 
 router.delete('/:userId', async (req, res, next) => {
     try {
-        const foundProducts = await Product.find({
+        const foundProducts = await Product.remove({
             user: req.params.userId
         })
 
-        for (const foundProduct of foundProducts) {
-            fs.unlink(`./${foundProduct.productImage}`, (err) => {
-                if (err) throw err;
-            });
-        } // forLoop for fs
+        // for (const foundProduct of foundProducts) {
+        //     fs.unlink(`./${foundProduct.productImage}`, (err) => {
+        //         if (err) throw err;
+        //     });
+        // } // forLoop for fs
 
-        const deletedProducts = await Product.remove({
-            user: req.params.userId
-        })
+        // const deletedProducts = await Product.remove({
+        //     user: req.params.userId
+        // })
         const deletedUser = await User.findOneAndRemove(req.params.userId)
         await req.session.destroy()
         res.redirect('/auth/signup')

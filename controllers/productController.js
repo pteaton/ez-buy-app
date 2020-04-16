@@ -126,10 +126,10 @@ router.get("/:id/img", async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
     try {
         const foundProduct = await Product.findById(req.params.id)
-
-        fs.unlink(`./${foundProduct.productImage}`, (err) => {
-            if (err) throw err;
-        });
+        //
+        // fs.unlink(`./${foundProduct.productImage}`, (err) => {
+        //     if (err) throw err;
+        // });
 
         const deletedProduct = await Product.findByIdAndRemove(req.params.id)
         res.redirect('/products')
@@ -159,7 +159,10 @@ router.put('/:id', upload.single('productImage'), async (req, res, next) => {
             title: req.body.title,
             price: req.body.price,
             description: req.body.description,
-            productImage: req.file.path
+              productImage: {
+                  data: req.file.buffer,
+                  contentType: req.file.mimetype
+              }
         }
 
         const productToBeUpdated = await Product.findByIdAndUpdate(req.params.id, updatedProduct, {
