@@ -141,7 +141,7 @@ router.get('/:userId/products/updateProduct', async (req, res, next) => {
 
     res.render('users/updateProduct.ejs', {
       product: findProductToEdit,
-      user: req.session.userId
+      userId: req.session.userId
     })
   }
   catch (err) {
@@ -154,15 +154,20 @@ router.get('/:userId/products/updateProduct', async (req, res, next) => {
 router.put('/:userId/product/:productId', upload.single('productImage'), async (req, res, next) => {
   try {
     console.log(req.body);
+
       const updatedProduct = {
           title: req.body.title,
           price: req.body.price,
-          description: req.body.description,
-            productImage: {
-                data: req.file.buffer,
-                contentType: req.file.mimetype
-            }
+          description: req.body.description
       }
+
+      if (req.file !== undefined) {
+            updatedProduct.productImage = {
+                data: req.file.buffer,
+                contentType: req.file.mimetype,
+            }        
+      }
+
       console.log("before updatedProduct");
       console.log(updatedProduct);
       const findUser = await User.findById(req.params.userId)

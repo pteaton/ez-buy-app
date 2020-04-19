@@ -157,10 +157,13 @@ router.put('/:id', upload.single('productImage'), async (req, res, next) => {
             title: req.body.title,
             price: req.body.price,
             description: req.body.description,
-              productImage: {
-                  data: req.file.buffer,
-                  contentType: req.file.mimetype
-              }
+        }
+
+        if (req.file !== undefined) {
+            updatedProduct.productImage = {
+                data: req.file.buffer,
+                contentType: req.file.mimetype                
+            }
         }
 
         const productToBeUpdated = await Product.findByIdAndUpdate(req.params.id, updatedProduct, {
