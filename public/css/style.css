@@ -1,7 +1,14 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
   background-color: #FFFFF0;
+  /* footer height */
+  margin-bottom: 60px;
 
 }
 
@@ -51,6 +58,10 @@ nav {
   font-style: normal;
 }
 
+ul {
+  list-style-type: none;
+}
+
 a {
   color: #FFFAF0;
 }
@@ -63,7 +74,6 @@ a {
   float: left;
   margin-right: 450px;
   font-size:2em;
-  /* margin-bottom: -30px; */
   color: #EA3470;
 }
 
@@ -82,12 +92,15 @@ a {
 
 }
 
+.footerSetting {
+  margin-bottom: 70px;
+}
+
 .productCard {
   min-width: 10vw;
   max-width: 30vw;
   margin: 5px;
   padding: 10px;
-
 }
 
 .square {
@@ -97,7 +110,18 @@ a {
 	align-items: center;
   margin-top: 50px;
   box-shadow: 5px 10px #876F68;
+  margin-bottom: 70px;
 }
+
+/* .showPage {
+  margin-left: 200px;
+  position: relative;
+  max-width: 70vw;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+
+} */
 
 .loggedInName  {
   margin-top: -50px;
@@ -107,12 +131,12 @@ a {
 /* SHOW PAGE PRODUCT */
 
 .description {
-max-width: 40vw;
 display: flex;
 justify-content: center;
 align-items: center;
+text-align: left;
 margin-left: 450px;
-margin-bottom: 50px;
+margin: auto 350px 50px 350px;
 }
 
 #description {
@@ -226,13 +250,15 @@ textarea.text {
   border: 1px solid darkgoldenrod;
 }
 
+
 footer {
+  position: absolute;
   bottom: 0;
+  left: 0;
   width: 100%;
-  height: 2.5rem;
-  margin-top: 300px;
+  height: 60px;
   background-color: #876F68;
-  font-size: 1.5em;
-  padding: 5px 0px, 5px, 0px;
   color: #FFFAF0;
+  font-size: 1.5em;
+  padding-top: 10px;
 }

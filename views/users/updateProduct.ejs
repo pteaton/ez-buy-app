@@ -1,7 +1,9 @@
 <%- include('../partials/header.ejs') %>
 
-  <h3>Update your product</h3>
-  <form method="POST" action="/products/<%= product.id %>?_method=PUT" enctype="multipart/form-data">
+  <h3>Update your product here!</h3>
+
+  <form method="POST" action="/users/<%= user.id %>/product/<%= product.id %>?_method=PUT" enctype="multipart/form-data">
+
     <fieldset>
 
     <div class="form-group">
@@ -51,11 +53,8 @@
     <small>
     We'll never share your information with anyone else.
     </small>
+
   </form>
-
-
-
-
 
 
 <%- include('../partials/footer.ejs') %>

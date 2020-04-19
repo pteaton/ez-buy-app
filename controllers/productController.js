@@ -113,8 +113,6 @@ router.post('/', upload.single('productImage'), async (req, res, next) => {
 router.get("/:id/img", async (req, res, next) => {
   try {
     const findProduct = await Product.findById(req.params.id).populate('user');
-    console.log("res");
-    console.log(res);
     res.set("Content-Type", findProduct.productImage.contentType);
     res.send(findProduct.productImage.data);
   } catch (err) {
@@ -125,7 +123,7 @@ router.get("/:id/img", async (req, res, next) => {
 // Delete route
 router.delete('/:id', async (req, res, next) => {
     try {
-        const foundProduct = await Product.findById(req.params.id)
+        // const foundProduct = await Product.findById(req.params.id)
         //
         // fs.unlink(`./${foundProduct.productImage}`, (err) => {
         //     if (err) throw err;

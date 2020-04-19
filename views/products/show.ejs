@@ -2,19 +2,24 @@
 
 
 
-  <h3>Show page for <%= product.title %></h3>
+  <h3>About <%= product.title %></h3>
+<div class="showPage">
 
-    <img class="productImg" src="/products/<%= product.id %>/img ">
-    <br>
-    <strong>Product by: <%= product.user.username %> </strong>
-    <br>
-    <strong>Posted on: <%= product.posted.toDateString() %> </strong>
-    <br>
-    <strong> Asking price: $<%= product.price %> </strong>
-      <br>
-  <article class="description">
-    <%= product.description %>
-  </article>
+  <img class="footerSetting productImg" src="/products/<%= product.id %>/img ">
+<br>
+  <strong> Product description </strong>
+<article class="description">
+  <%= product.description %>
+</article>
+
+</div>
+<br>
+<strong>Product by: <%= product.user.username %> </strong>
+<br>
+<strong>Posted on: <%= product.posted.toDateString() %> </strong>
+<br>
+<strong> Asking price: $<%= product.price %> </strong>
+  <br>
 
 
 
@@ -44,7 +49,7 @@
 </form>
 
 
-  <ul class="reviews" >
+  <ul class="footerSetting reviews" >
     <% product.reviews.forEach((review) => { %>
       <li>
         <strong> <%= review.name %> </strong>

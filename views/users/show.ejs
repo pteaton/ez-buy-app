@@ -12,14 +12,28 @@
         <output> Selling price: $<%= product.price %> </output>
         <output> (Posted on: <%= product.posted.toDateString() %>) </output>
       </li>
-      <li>
-        <p> <%= product.description %> </p>
-        <hr>
-      </li>
+
       <li>
         <img class="productImg"src="/products/<%=product.id %>/img"></p>
       </li>
+      <li>
+        <p class="footerSetting"> <%= product.description %> </p>
+        <hr>
+      </li>
+      <form method="POST" action="/users/<%= user.id %>/products?_method=DELETE">
+
+        <%  if (userId == product.user.id) { %>
+                <button class="btndelete btn btn-outline-primary">Delete</button> %>
+                <a class="updatebtn btn btn-outline-primary" href="/users/<%= user.id %>/products/updateProduct">
+              Update the product!</a>
+        <%  } %>
+
+      </form>
     <% }) %>
   </ul>
+
+
+
+
 
 <%- include('../partials/footer.ejs') %>
