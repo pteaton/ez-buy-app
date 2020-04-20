@@ -145,13 +145,13 @@ margin: auto 350px 50px 350px;
 h6 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 4em;
-  color: #695F61 ;
+  /* color: #695F61; */
   margin-bottom: -5px;
 }
 
 h5 {
   font-family: 'Josefin Slab', serif;
-  color: #695F61 ;
+  /* color: #695F61; */
 }
 
 .logout {
@@ -187,7 +187,7 @@ h5 {
 .add {
   margin-bottom: -50px;
 
-  margin-left: 140px;
+  margin-left: 160px;
 }
 
 .reviews {
