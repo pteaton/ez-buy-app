@@ -107,6 +107,7 @@ a {
   max-width: 30vw;
   margin: 5px;
   padding: 10px;
+  text-align: left;
 }
 
 .square {
