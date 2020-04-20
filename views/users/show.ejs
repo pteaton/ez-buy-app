@@ -18,18 +18,20 @@
       </li>
       <li>
         <p class="footerSetting"> <%= product.description %> </p>
-        <hr>
+
       </li>
-      <form method="POST" action="/users/<%= user.id %>/products?_method=DELETE">
+      <form method="POST" action="/users/<%= user.id %>/products/<%= product.id %>?_method=DELETE">
 
         <%  if (userId == product.user.id) { %>
                 <button class="btndelete btn btn-outline-primary">Delete</button> %>
-                <a class="updatebtn btn btn-outline-primary" href="/users/<%= user.id %>/products/updateProduct">
+                <a class="updatebtn btn btn-outline-primary" href="/users/<%= user.id %>/products/<%= product.id %>/updateProduct">
               Update the product!</a>
         <%  } %>
 
       </form>
+        <hr>
     <% }) %>
+
   </ul>
 
 

@@ -89,7 +89,7 @@ router.delete('/:userId', async (req, res, next) => {
 
 
 // GET route edit page
-router.get('/update/:userId/updateProfile', async (req, res, next) => {
+router.get('/:userId/updateProfile', async (req, res, next) => {
     try {
         const foundUser = await User.findById(req.params.userId)
 
@@ -134,10 +134,10 @@ router.delete('/:userId/products', async (req, res, next) => {
 })
 
 // Edit route for products
-router.get('/:userId/products/updateProduct', async (req, res, next) => {
+router.get('/:userId/products/:productId/updateProduct', async (req, res, next) => {
   try {
     const findUser = await User.findById(req.params.userId)
-    const findProductToEdit = await Product.findOne({ user: req.params.userId })
+    const findProductToEdit = await Product.findById( req.params.productId )
 
     res.render('users/updateProduct.ejs', {
       product: findProductToEdit,
@@ -151,7 +151,7 @@ router.get('/:userId/products/updateProduct', async (req, res, next) => {
 })
 
 // Update Route for user to update product
-router.put('/:userId/product/:productId', upload.single('productImage'), async (req, res, next) => {
+router.put('/:userId/products/:productId', upload.single('productImage'), async (req, res, next) => {
   try {
     console.log(req.body);
 
@@ -165,19 +165,16 @@ router.put('/:userId/product/:productId', upload.single('productImage'), async (
             updatedProduct.productImage = {
                 data: req.file.buffer,
                 contentType: req.file.mimetype,
-            }        
+            }
       }
 
-      console.log("before updatedProduct");
-      console.log(updatedProduct);
       const findUser = await User.findById(req.params.userId)
-      const productToBeUpdated = await Product.findOneAndUpdate(
+      const productToBeUpdated = await Product.findByIdAndUpdate(
         req.params.productId,
         updatedProduct,
         { new: true }
       )
-      console.log("updated Product");
-      console.log(productToBeUpdated);
+
       res.redirect(`/users/${findUser._id}/products`)
 }
     catch (err) {

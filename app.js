@@ -59,9 +59,9 @@ const reviewController = require('./controllers/reviewController')
 app.use('/reviews', reviewController)
 
 // Get route for home
-// app.get('/', (req, res) => {
-//   res.render('home.ejs')
-// })
+app.get('/', (req, res) => {
+  res.render('home.ejs')
+})
 
 
 // 404 page
