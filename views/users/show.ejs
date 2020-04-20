@@ -20,7 +20,7 @@
         <p class="footerSetting"> <%= product.description %> </p>
 
       </li>
-      <form method="POST" action="/users/<%= user.id %>/products/<%= product.id %>?_method=DELETE">
+      <form method="POST" action="/users/<%= user.id %>/products?_method=DELETE">
 
         <%  if (userId == product.user.id) { %>
                 <button class="btndelete btn btn-outline-primary">Delete</button> %>

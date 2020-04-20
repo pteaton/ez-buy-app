@@ -115,19 +115,10 @@ a {
 	justify-content: center;
 	align-items: center;
   margin-top: 50px;
-  box-shadow: 5px 10px #876F68;
+  box-shadow: 5px 10px #ED5F77;
   margin-bottom: 70px;
 }
 
-/* .showPage {
-  margin-left: 200px;
-  position: relative;
-  max-width: 70vw;
-  text-align: left;
-  display: flex;
-  justify-content: space-between;
-
-} */
 
 .loggedInName  {
   margin-top: -50px;
@@ -154,13 +145,13 @@ margin: auto 350px 50px 350px;
 h6 {
   font-family: 'Cormorant Garamond', serif;
   font-size: 4em;
-  color: #ED5F77;
+  color: #695F61 ;
   margin-bottom: -5px;
 }
 
 h5 {
   font-family: 'Josefin Slab', serif;
-  color: #ED5F77;
+  color: #695F61 ;
 }
 
 .logout {
