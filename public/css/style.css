@@ -75,12 +75,13 @@ a {
   margin-right: 450px;
   font-size:2em;
   color: #EA3470;
+  margin-bottom: -150px;
 }
 
 .restRoutes {
   float: right;
   font-size: 1em;
-  margin-top: -30px;
+  margin-top: 30px;
 }
 
 .productImg {
