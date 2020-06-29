@@ -100,7 +100,7 @@ const reviewSchema = new mongoose.Schema({
 ```
 
 ## Technologies used:
-#### JavaScript, Node.js, Express and sessions
+#### MERN stack!
 
 ## Wireframes
 ![alt text](https://i.imgur.com/JcyjE4l.jpg)
